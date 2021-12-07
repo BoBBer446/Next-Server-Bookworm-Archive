@@ -5,11 +5,11 @@ install_nextcloud() {
 
 trap error_exit ERR
 
-source /root/NeXt-Server-Buster/configs/sources.cfg
+source /root/NeXt-Server-Bullseye/configs/sources.cfg
 
 install_packages "unzip"
 
-MYSQL_ROOT_PASS=$(grep -Pom 1 "(?<=^MYSQL_ROOT_PASS: ).*$" /root/NeXt-Server-Buster/login_information.txt)
+MYSQL_ROOT_PASS=$(grep -Pom 1 "(?<=^MYSQL_ROOT_PASS: ).*$" /root/NeXt-Server-Bullseye/login_information.txt)
 NEXTCLOUD_USER=$(username)
 NEXTCLOUD_DB_PASS=$(password)
 NEXTCLOUD_DB_NAME=$(username)
@@ -33,26 +33,26 @@ fi
 
 chown -R www-data: /var/www/${MYDOMAIN}/public/${NEXTCLOUD_PATH_NAME}
 
-cp /root/NeXt-Server-Buster/addons/vhosts/_nextcloud.conf /etc/nginx/_nextcloud.conf
+cp /root/NeXt-Server-Bullseye/addons/vhosts/_nextcloud.conf /etc/nginx/_nextcloud.conf
 sed_replace_word "#include _nextcloud.conf;" "include _nextcloud.conf;" "/etc/nginx/sites-available/${MYDOMAIN}.conf"
 sed_replace_word "change_path" "${NEXTCLOUD_PATH_NAME}" "/etc/nginx/_nextcloud.conf"
 
 systemctl -q restart php$PHPVERSION7-fpm.service
 systemctl -q reload nginx.service
 
-touch /root/NeXt-Server-Buster/nextcloud_login_data.txt
-echo "--------------------------------------------" >> /root/NeXt-Server-Buster/nextcloud_login_data.txt
-echo "Nextcloud" >> /root/NeXt-Server-Buster/nextcloud_login_data.txt
-echo "--------------------------------------------" >> /root/NeXt-Server-Buster/nextcloud_login_data.txt
-echo "https://${MYDOMAIN}/${NEXTCLOUD_PATH_NAME}" >> /root/NeXt-Server-Buster/nextcloud_login_data.txt
-echo "NextcloudDBUser = ${NEXTCLOUD_USER}" >> /root/NeXt-Server-Buster/nextcloud_login_data.txt
-echo "Database password = ${NEXTCLOUD_DB_PASS}" >> /root/NeXt-Server-Buster/nextcloud_login_data.txt
-echo "NextcloudDBName = ${NEXTCLOUD_DB_NAME}" >> /root/NeXt-Server-Buster/nextcloud_login_data.txt
+touch /root/NeXt-Server-Bullseye/nextcloud_login_data.txt
+echo "--------------------------------------------" >> /root/NeXt-Server-Bullseye/nextcloud_login_data.txt
+echo "Nextcloud" >> /root/NeXt-Server-Bullseye/nextcloud_login_data.txt
+echo "--------------------------------------------" >> /root/NeXt-Server-Bullseye/nextcloud_login_data.txt
+echo "https://${MYDOMAIN}/${NEXTCLOUD_PATH_NAME}" >> /root/NeXt-Server-Bullseye/nextcloud_login_data.txt
+echo "NextcloudDBUser = ${NEXTCLOUD_USER}" >> /root/NeXt-Server-Bullseye/nextcloud_login_data.txt
+echo "Database password = ${NEXTCLOUD_DB_PASS}" >> /root/NeXt-Server-Bullseye/nextcloud_login_data.txt
+echo "NextcloudDBName = ${NEXTCLOUD_DB_NAME}" >> /root/NeXt-Server-Bullseye/nextcloud_login_data.txt
 
-sed_replace_word "NEXTCLOUD_IS_INSTALLED=\"0"\" "NEXTCLOUD_IS_INSTALLED=\"1"\" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
-echo "$NEXTCLOUD_PATH_NAME" >> /root/NeXt-Server-Buster/configs/blocked_paths.conf
+sed_replace_word "NEXTCLOUD_IS_INSTALLED=\"0"\" "NEXTCLOUD_IS_INSTALLED=\"1"\" "/root/NeXt-Server-Bullseye/configs/userconfig.cfg"
+echo "$NEXTCLOUD_PATH_NAME" >> /root/NeXt-Server-Bullseye/configs/blocked_paths.conf
 
 dialog_msg "Please save the shown login information on next page"
-cat /root/NeXt-Server-Buster/nextcloud_login_data.txt
+cat /root/NeXt-Server-Bullseye/nextcloud_login_data.txt
 continue_or_exit
 }

@@ -3,7 +3,7 @@
 
 menu_options_munin() {
 
-source /root/NeXt-Server-Buster/configs/sources.cfg
+source /root/NeXt-Server-Bullseye/configs/sources.cfg
 get_domain
 
 HEIGHT=40
@@ -21,12 +21,12 @@ clear
 case $CHOICE in
 1)
 MUNIN_PATH_NAME="munin"
-sed_replace_word "MUNIN_PATH_NAME=\"0"\" "MUNIN_PATH_NAME=\"${MUNIN_PATH_NAME}"\" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
+sed_replace_word "MUNIN_PATH_NAME=\"0"\" "MUNIN_PATH_NAME=\"${MUNIN_PATH_NAME}"\" "/root/NeXt-Server-Bullseye/configs/userconfig.cfg"
 ;;
 
 2)
 MUNIN_PATH_NAME="monitoring"
-sed_replace_word "MUNIN_PATH_NAME=\"0"\" "MUNIN_PATH_NAME=\"${MUNIN_PATH_NAME}"\" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
+sed_replace_word "MUNIN_PATH_NAME=\"0"\" "MUNIN_PATH_NAME=\"${MUNIN_PATH_NAME}"\" "/root/NeXt-Server-Bullseye/configs/userconfig.cfg"
 ;;
 
 3)
@@ -41,13 +41,13 @@ MUNIN_PATH_NAME=$(dialog --clear \
                          )
 if [[ "$MUNIN_PATH_NAME" =~ ^[a-zA-Z0-9]+$ ]]; then
     if [ ${#MUNIN_PATH_NAME} -ge 2 ]; then
-       array=($(cat "/root/NeXt-Server-Buster/configs/blocked_paths.conf"))
+       array=($(cat "/root/NeXt-Server-Bullseye/configs/blocked_paths.conf"))
        printf -v array_str -- ',,%q' "${array[@]}"
        if [[ "${array_str},," =~ ,,${MUNIN_PATH_NAME},, ]]; then
            dialog_msg "[ERROR] Your Munin path ${MUNIN_PATH_NAME} is already used by the script, please choose another one!"
            dialog --clear
        else
-           sed_replace_word "MUNIN_PATH_NAME=\"0"\" "MUNIN_PATH_NAME=\"${MUNIN_PATH_NAME}"\" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
+           sed_replace_word "MUNIN_PATH_NAME=\"0"\" "MUNIN_PATH_NAME=\"${MUNIN_PATH_NAME}"\" "/root/NeXt-Server-Bullseye/configs/userconfig.cfg"
            break
       fi
     else

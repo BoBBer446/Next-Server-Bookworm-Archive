@@ -5,14 +5,14 @@ install_wordpress() {
 
 trap error_exit ERR
 
-source /root/NeXt-Server-Buster/configs/sources.cfg
+source /root/NeXt-Server-Bullseye/configs/sources.cfg
 get_domain
 
 WORDPRESS_USER=$(username)
 WORDPRESS_DB_NAME=$(username)
 WORDPRESS_DB_PASS=$(password)
 WORDPRESS_DB_PREFIX=$(username)
-MYSQL_ROOT_PASS=$(grep -Pom 1 "(?<=^MYSQL_ROOT_PASS: ).*$" /root/NeXt-Server-Buster/login_information.txt)
+MYSQL_ROOT_PASS=$(grep -Pom 1 "(?<=^MYSQL_ROOT_PASS: ).*$" /root/NeXt-Server-Bullseye/login_information.txt)
 
 mysql -u root -p${MYSQL_ROOT_PASS} -e "CREATE DATABASE ${WORDPRESS_DB_NAME};"
 mysql -u root -p${MYSQL_ROOT_PASS} -e "CREATE USER ${WORDPRESS_USER}@localhost IDENTIFIED BY '${WORDPRESS_DB_PASS}';"
@@ -66,30 +66,30 @@ chown www-data:www-data -R *
 find . -type f -exec chmod 644 {} \;
 find . -type d -exec chmod 755 {} \;
 
-cp /root/NeXt-Server-Buster/addons/vhosts/_wordpress.conf /etc/nginx/_wordpress.conf
+cp /root/NeXt-Server-Bullseye/addons/vhosts/_wordpress.conf /etc/nginx/_wordpress.conf
 sed_replace_word "#include _wordpress.conf;" "include _wordpress.conf;" "/etc/nginx/sites-available/${MYDOMAIN}.conf"
 
 systemctl -q restart php$PHPVERSION7-fpm.service
 systemctl restart nginx
 
-touch /root/NeXt-Server-Buster/wordpress_login_data.txt
-echo "--------------------------------------------" >> /root/NeXt-Server-Buster/wordpress_login_data.txt
-echo "Wordpress" >> /root/NeXt-Server-Buster/wordpress_login_data.txt
-echo "--------------------------------------------" >> /root/NeXt-Server-Buster/wordpress_login_data.txt
+touch /root/NeXt-Server-Bullseye/wordpress_login_data.txt
+echo "--------------------------------------------" >> /root/NeXt-Server-Bullseye/wordpress_login_data.txt
+echo "Wordpress" >> /root/NeXt-Server-Bullseye/wordpress_login_data.txt
+echo "--------------------------------------------" >> /root/NeXt-Server-Bullseye/wordpress_login_data.txt
 if [ "$WORDPRESS_PATH_NAME" != "root" ]; then
-  echo "https://${MYDOMAIN}/${WORDPRESS_PATH_NAME}" >> /root/NeXt-Server-Buster/wordpress_login_data.txt
+  echo "https://${MYDOMAIN}/${WORDPRESS_PATH_NAME}" >> /root/NeXt-Server-Bullseye/wordpress_login_data.txt
 else
-  echo "https://${MYDOMAIN}/" >> /root/NeXt-Server-Buster/wordpress_login_data.txt
+  echo "https://${MYDOMAIN}/" >> /root/NeXt-Server-Bullseye/wordpress_login_data.txt
 fi
-echo "WordpressDBUser = ${WORDPRESS_USER}" >> /root/NeXt-Server-Buster/wordpress_login_data.txt
-echo "WordpressDBName = ${WORDPRESS_DB_NAME}" >> /root/NeXt-Server-Buster/wordpress_login_data.txt
-echo "WordpressDBPassword = ${WORDPRESS_DB_PASS}" >> /root/NeXt-Server-Buster/wordpress_login_data.txt
-echo "WordpressScriptPath = ${WORDPRESS_PATH_NAME}" >> /root/NeXt-Server-Buster/wordpress_login_data.txt
+echo "WordpressDBUser = ${WORDPRESS_USER}" >> /root/NeXt-Server-Bullseye/wordpress_login_data.txt
+echo "WordpressDBName = ${WORDPRESS_DB_NAME}" >> /root/NeXt-Server-Bullseye/wordpress_login_data.txt
+echo "WordpressDBPassword = ${WORDPRESS_DB_PASS}" >> /root/NeXt-Server-Bullseye/wordpress_login_data.txt
+echo "WordpressScriptPath = ${WORDPRESS_PATH_NAME}" >> /root/NeXt-Server-Bullseye/wordpress_login_data.txt
 
-sed_replace_word "WORDPRESS_IS_INSTALLED=\"0"\" "WORDPRESS_IS_INSTALLED=\"1"\" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
-echo "$WORDPRESS_PATH_NAME" >> /root/NeXt-Server-Buster/configs/blocked_paths.conf
+sed_replace_word "WORDPRESS_IS_INSTALLED=\"0"\" "WORDPRESS_IS_INSTALLED=\"1"\" "/root/NeXt-Server-Bullseye/configs/userconfig.cfg"
+echo "$WORDPRESS_PATH_NAME" >> /root/NeXt-Server-Bullseye/configs/blocked_paths.conf
 
 dialog_msg "Please save the shown login information on next page"
-cat /root/NeXt-Server-Buster/wordpress_login_data.txt
+cat /root/NeXt-Server-Bullseye/wordpress_login_data.txt
 continue_or_exit
 }

@@ -1,17 +1,17 @@
 <p align="center">
   <a href="https://nxtsrv.de/">
-    <img src="https://raw.githubusercontent.com/shoujii/NeXt-Server-Buster/master/includes/NeXt-logo.jpg">
+    <img src="https://raw.githubusercontent.com/shoujii/NeXt-Server-Bullseye/master/includes/NeXt-logo.jpg">
   </a>
 
-  <h3 align="center">NeXt-Server-Buster</h3>
+  <h3 align="center">NeXt-Server-Bullseye</h3>
 
   <p align="center">
-    Debian Buster Version of NeXt-Server Script.
+    Debian Bullseye Version of NeXt-Server Script.
     <br>
-    <a href="https://github.com/shoujii/NeXt-Server-Buster/wiki"><strong>NeXt-Server Wiki »</strong></a>
+    <a href="https://github.com/shoujii/NeXt-Server-Bullseye/wiki"><strong>NeXt-Server Wiki »</strong></a>
     <br>
     <br>
-    <a href="https://github.com/shoujii/NeXt-Server-Buster/issues/new">Report bug</a>
+    <a href="https://github.com/shoujii/NeXt-Server-Bullseye/issues/new">Report bug</a>
     ·
     <a href="https://nxtsrv.de/">Blog</a>
   </p>
@@ -62,7 +62,7 @@ Login with:
 otherwise the script will throw multiple errors!
 
 Install with [git]:
-- `cd /root/; apt update; apt install git -y; git clone https://github.com/shoujii/NeXt-Server-Buster; cd NeXt-Server-Buster; bash nxt.sh
+- `cd /root/; apt update; apt install git -y; git clone https://github.com/shoujii/NeXt-Server-Bullseye; cd NeXt-Server-Bullseye; bash nxt.sh
 `
 
 Install dev mode [git]:
@@ -71,17 +71,17 @@ DO NOT USE FOR PRODUCTION!
 
 The Mailserver and other features won't work!
 (This will create a fake Let's Encrypt Cert, you won't run into the limition of weekly cert's)
-- `cd /root/; apt update; apt install git -y; git clone https://github.com/shoujii/NeXt-Server-Buster; cd NeXt-Server-Buster; touch dev.conf; bash nxt.sh
+- `cd /root/; apt update; apt install git -y; git clone https://github.com/shoujii/NeXt-Server-Bullseye; cd NeXt-Server-Bullseye; touch dev.conf; bash nxt.sh
 `
 
-Read the [NeXt-Server Wiki](https://github.com/shoujii/NeXt-Server-Buster/wiki) for advanced information!
+Read the [NeXt-Server Wiki](https://github.com/shoujii/NeXt-Server-Bullseye/wiki) for advanced information!
 
 ## What's included
 
 Within the cloned repository you'll find the following directories and files, grouping the different installation files and configs in a logic structure. You'll see something like this:
 
 ```
-NeXt-Server-Buster/
+NeXt-Server-Bullseye/
     ├── .github/
     │   ├── issue_template.md
     │
@@ -146,12 +146,12 @@ NeXt-Server-Buster/
 
 ## Bugs and feature requests
 
-Have a bug or a feature request? Please first read the [issue guidelines]() and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/shoujii/NeXt-Server-Buster/issues/new).
+Have a bug or a feature request? Please first read the [issue guidelines]() and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/shoujii/NeXt-Server-Bullseye/issues/new).
 
 
 ## Documentation
 
-The NeXt-Server documentation, included in this repository in the docs directory, is also available on the [NeXt-Server Wiki](https://github.com/shoujii/NeXt-Server-Buster/wiki).
+The NeXt-Server documentation, included in this repository in the docs directory, is also available on the [NeXt-Server Wiki](https://github.com/shoujii/NeXt-Server-Bullseye/wiki).
 
 ## Contributing
 
@@ -197,5 +197,5 @@ A big thanks to [George Liu], for some great lines of code!.
 
 ## Copyright and license
 
-Code and documentation copyright 2017-2020 the [NeXt-Server-Buster Authors](https://github.com/shoujii/NeXt-Server-Buster/graphs/contributors)
-Code released under the [GNU General Public License v3.0](https://github.com/shoujii/NeXt-Server-Buster/blob/master/LICENSE).
+Code and documentation copyright 2017-2020 the [NeXt-Server-Bullseye Authors](https://github.com/shoujii/NeXt-Server-Bullseye/graphs/contributors)
+Code released under the [GNU General Public License v3.0](https://github.com/shoujii/NeXt-Server-Bullseye/blob/master/LICENSE).

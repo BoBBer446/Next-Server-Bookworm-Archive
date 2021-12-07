@@ -3,7 +3,7 @@
 
 menu_options_after_install() {
 
-source /root/NeXt-Server-Buster/configs/sources.cfg
+source /root/NeXt-Server-Bullseye/configs/sources.cfg
 
 HEIGHT=40
 WIDTH=80
@@ -48,7 +48,7 @@ case $CHOICE in
 ;;
 
 5)
-  bash /root/NeXt-Server-Buster/nxt.sh
+  bash /root/NeXt-Server-Bullseye/nxt.sh
 ;;
 
 6)

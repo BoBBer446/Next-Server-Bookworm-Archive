@@ -3,7 +3,7 @@
 
 menu_options_firewall() {
 
-source /root/NeXt-Server-Buster/configs/sources.cfg
+source /root/NeXt-Server-Bullseye/configs/sources.cfg
 
 HEIGHT=40
 WIDTH=80

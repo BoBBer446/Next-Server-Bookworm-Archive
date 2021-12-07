@@ -73,7 +73,7 @@ echo "Nginx:"
 echo "${ok} ${passed_nginx_checks} checks passed!"
 
 if [[ "${failed_nginx_checks}" != "0" ]]; then
-  echo "${error} ${failed_nginx_checks} check/s failed! Please check /root/NeXt-Server-Buster/logs/failed_checks.log or consider a new installation!"
+  echo "${error} ${failed_nginx_checks} check/s failed! Please check /root/NeXt-Server-Bullseye/logs/failed_checks.log or consider a new installation!"
 fi
 
 #check config
@@ -86,7 +86,7 @@ else
 fi
 
 #check version
-NGINX_VERSION=$(grep -Pom 1 "(?<=^NGINX_VERSION=).*$" /root/NeXt-Server-Buster/configs/versions.cfg)
+NGINX_VERSION=$(grep -Pom 1 "(?<=^NGINX_VERSION=).*$" /root/NeXt-Server-Bullseye/configs/versions.cfg)
 NGINX_VERSION=$(echo "$NGINX_VERSION" | sed 's/\"//g')
 LOCAL_NGINX_VERSION=$(nginx -v 2>&1 | grep -o '[0-9.]*$')
 if [ $LOCAL_NGINX_VERSION != ${NGINX_VERSION} ]; then

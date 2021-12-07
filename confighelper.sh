@@ -10,7 +10,7 @@ HEIGHT=40
 WIDTH=80
 
 # --- MYDOMAIN ---
-source /root/NeXt-Server-Buster/configs/sources.cfg
+source /root/NeXt-Server-Bullseye/configs/sources.cfg
 get_domain
 CHECK_DOMAIN_LENGTH=`echo -n ${DETECTED_DOMAIN} | wc -m`
 
@@ -64,9 +64,9 @@ fi
 
 # --- DNS Check ---
 server_ip=$(ip route get 1.1.1.1 | awk '/1.1.1.1/ {print $(NF-2)}')
-sed_replace_word "server_ip" "$server_ip" "/root/NeXt-Server-Buster/dns_settings.txt"
-sed_replace_word "yourdomain.com" "$MYDOMAIN" "/root/NeXt-Server-Buster/dns_settings.txt"
-dialog --title "DNS Settings" --tab-correct --exit-label "ok" --textbox /root/NeXt-Server-Buster/dns_settings.txt 50 200
+sed_replace_word "server_ip" "$server_ip" "/root/NeXt-Server-Bullseye/dns_settings.txt"
+sed_replace_word "yourdomain.com" "$MYDOMAIN" "/root/NeXt-Server-Bullseye/dns_settings.txt"
+dialog --title "DNS Settings" --tab-correct --exit-label "ok" --textbox /root/NeXt-Server-Bullseye/dns_settings.txt 50 200
 
 BACKTITLE="NeXt Server Installation"
 TITLE="NeXt Server Installation"
@@ -175,8 +175,8 @@ IPV6NETINPUT="fe80::1"
 CONFIG_COMPLETED="1"
 
 GIT_LOCAL_FILES_HEAD=$(git rev-parse --short HEAD)
-rm -rf /root/NeXt-Server-Buster/configs/userconfig.cfg
-cat >> /root/NeXt-Server-Buster/configs/userconfig.cfg <<END
+rm -rf /root/NeXt-Server-Bullseye/configs/userconfig.cfg
+cat >> /root/NeXt-Server-Bullseye/configs/userconfig.cfg <<END
 #-----------------------------------------------------------#
 ############### Config File from Confighelper ###############
 #-----------------------------------------------------------#
@@ -220,7 +220,7 @@ TIMEZONE="EMPTY_TIMEZONE"
 #-----------------------------------------------------------#
 END
 
-dialog --title "Userconfig" --exit-label "ok" --textbox /root/NeXt-Server-Buster/configs/userconfig.cfg 50 250
+dialog --title "Userconfig" --exit-label "ok" --textbox /root/NeXt-Server-Bullseye/configs/userconfig.cfg 50 250
 clear
 
 CHOICE_HEIGHT=2

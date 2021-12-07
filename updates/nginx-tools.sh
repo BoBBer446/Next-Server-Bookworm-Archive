@@ -5,7 +5,7 @@ nginx_update_menu() {
 
 trap error_exit ERR
 
-source /root/NeXt-Server-Buster/configs/sources.cfg
+source /root/NeXt-Server-Bullseye/configs/sources.cfg
 set_logs
 
 LATEST_NGINX_VERSION=$(curl -4sL https://nginx.org/en/download.html 2>&1 | egrep -o "nginx\-[0-9.]+\.tar[.a-z]*" | grep -v '.asc' | awk -F "nginx-" '/.tar.gz$/ {print $2}' | sed -e 's|.tar.gz||g' | head -n1 2>&1)
@@ -59,13 +59,13 @@ backup_nginx() {
 update_nginx() {
 
   trap error_exit ERR
-  mkdir -p /root/NeXt-Server-Buster/updates/sources/
+  mkdir -p /root/NeXt-Server-Bullseye/updates/sources/
 
-  cd /root/NeXt-Server-Buster/updates/sources/
+  cd /root/NeXt-Server-Bullseye/updates/sources/
   wget https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz >>"$main_log" 2>>"$err_log"
   tar -xzf openssl-${OPENSSL_VERSION}.tar.gz >>"$main_log" 2>>"$err_log"
 
-  cd /root/NeXt-Server-Buster/updates/sources/
+  cd /root/NeXt-Server-Bullseye/updates/sources/
   wget_tar "https://codeload.github.com/pagespeed/ngx_pagespeed/zip/v${NPS_VERSION}"
   unzip_file "v${NPS_VERSION}"
   cd incubator-pagespeed-ngx-${NPS_VERSION}/
@@ -73,15 +73,15 @@ update_nginx() {
   wget_tar "https://dl.google.com/dl/page-speed/psol/${PSOL_VERSION}-x64.tar.gz"
   tar_file "${PSOL_VERSION}-x64.tar.gz"
 
-  cd /root/NeXt-Server-Buster/updates/sources/
+  cd /root/NeXt-Server-Bullseye/updates/sources/
   wget_tar "https://codeload.github.com/openresty/headers-more-nginx-module/zip/v${NGINX_HEADER_MOD_VERSION}"
   unzip_file "v${NGINX_HEADER_MOD_VERSION}"
 
-  cd /root/NeXt-Server-Buster/updates/sources/
+  cd /root/NeXt-Server-Bullseye/updates/sources/
   git clone https://github.com/nbs-system/naxsi.git -q
 
   systemctl -q stop nginx.service
-  cd /root/NeXt-Server-Buster/updates/sources/
+  cd /root/NeXt-Server-Bullseye/updates/sources/
   wget_tar "https://nginx.org/download/nginx-${LATEST_NGINX_VERSION}.tar.gz"
   tar_file "nginx-${LATEST_NGINX_VERSION}.tar.gz"
   cd nginx-${LATEST_NGINX_VERSION}
@@ -130,16 +130,16 @@ update_nginx() {
   --with-http_mp4_module \
   --with-http_gunzip_module \
   --with-openssl-opt=enable-tls1_3 \
-  --with-openssl=/root/NeXt-Server-Buster/updates/sources/openssl-${OPENSSL_VERSION} \
-  --add-module=/root/NeXt-Server-Buster/updates/sources/naxsi/naxsi_src \
-  --add-module=/root/NeXt-Server-Buster/updates/sources/incubator-pagespeed-ngx-${NPS_VERSION} \
-  --add-module=/root/NeXt-Server-Buster/updates/sources/headers-more-nginx-module-${NGINX_HEADER_MOD_VERSION}"
+  --with-openssl=/root/NeXt-Server-Bullseye/updates/sources/openssl-${OPENSSL_VERSION} \
+  --add-module=/root/NeXt-Server-Bullseye/updates/sources/naxsi/naxsi_src \
+  --add-module=/root/NeXt-Server-Bullseye/updates/sources/incubator-pagespeed-ngx-${NPS_VERSION} \
+  --add-module=/root/NeXt-Server-Bullseye/updates/sources/headers-more-nginx-module-${NGINX_HEADER_MOD_VERSION}"
 
   ./configure $NGINX_OPTIONS $NGINX_MODULES --with-cc-opt='-O2 -g -pipe -Wall -Wformat -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong -m64 -mtune=generic'
   make -j $(nproc)
   make install
 
-  sed_replace_word "NGINX_VERSION="'${NGINX_VERSION}'"" "NGINX_VERSION="'${LATEST_NGINX_VERSION}'"" "/root/NeXt-Server-Buster/configs/versions.cfg"
+  sed_replace_word "NGINX_VERSION="'${NGINX_VERSION}'"" "NGINX_VERSION="'${LATEST_NGINX_VERSION}'"" "/root/NeXt-Server-Bullseye/configs/versions.cfg"
   ##create case for failed update + restore old version value?
   check_nginx
   continue_or_exit

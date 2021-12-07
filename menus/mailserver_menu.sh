@@ -3,7 +3,7 @@
 
 menu_options_mailserver() {
 
-source /root/NeXt-Server-Buster/configs/sources.cfg
+source /root/NeXt-Server-Bullseye/configs/sources.cfg
 
 trap error_exit ERR
 

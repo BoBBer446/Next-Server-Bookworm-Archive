@@ -5,13 +5,13 @@ update_openssl() {
 
 trap error_exit ERR
 
-source /root/NeXt-Server-Buster/configs/sources.cfg
+source /root/NeXt-Server-Bullseye/configs/sources.cfg
 
 #-4 only working for beta releases -> stable releases -3!
 LOCAL_OPENSSL_VERSION_STRING=$(openssl version | awk '/OpenSSL/ {print $(NF-3)}')
 
 if [[ ${LOCAL_OPENSSL_VERSION} != ${OPENSSL_VERSION} ]]; then
-    cd /root/NeXt-Server-Buster/sources
+    cd /root/NeXt-Server-Bullseye/sources
     wget_tar "https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz"
     tar_file "openssl-${OPENSSL_VERSION}.tar.gz"
     cd openssl-${OPENSSL_VERSION}

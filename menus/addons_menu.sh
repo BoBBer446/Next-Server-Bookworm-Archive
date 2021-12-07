@@ -3,7 +3,7 @@
 
 menu_options_addons() {
 
-source /root/NeXt-Server-Buster/configs/sources.cfg
+source /root/NeXt-Server-Bullseye/configs/sources.cfg
 set_logs
 
 HEIGHT=40
@@ -46,7 +46,7 @@ if [[ ${NXT_IS_INSTALLED} == '1' ]] || [[ ${NXT_IS_INSTALLED_MAILSERVER} == '1' 
     else
         dialog_info "Installing Teamspeak 3"
         install_teamspeak3
-        dialog_msg "Finished installing Teamspeak 3! Credentials: /root/NeXt-Server-Buster/teamspeak3_login_data.txt"
+        dialog_msg "Finished installing Teamspeak 3! Credentials: /root/NeXt-Server-Bullseye/teamspeak3_login_data.txt"
     fi
 else
     echo "You have to install the NeXt Server to run this Addon!"
@@ -93,7 +93,7 @@ if [[ ${NXT_IS_INSTALLED} == '1' ]] || [[ ${NXT_IS_INSTALLED_MAILSERVER} == '1' 
     else
         menu_options_nextcloud
         install_nextcloud
-        dialog --title "Your Nextcloud logininformations" --tab-correct --exit-label "ok" --textbox /root/NeXt-Server-Buster/nextcloud_login_data.txt 50 200
+        dialog --title "Your Nextcloud logininformations" --tab-correct --exit-label "ok" --textbox /root/NeXt-Server-Bullseye/nextcloud_login_data.txt 50 200
     fi
 else
     echo "You have to install the NeXt Server with the Webserver component to run this Addon!"
@@ -195,7 +195,7 @@ menu_options_addons
 ;;
 
 11)
-bash /root/NeXt-Server-Buster/nxt.sh
+bash /root/NeXt-Server-Bullseye/nxt.sh
 ;;
 
 12)

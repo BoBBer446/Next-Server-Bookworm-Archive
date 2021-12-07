@@ -5,7 +5,7 @@ install_composer() {
 
 trap error_exit ERR
 
-cd /root/NeXt-Server-Buster/sources/
+cd /root/NeXt-Server-Bullseye/sources/
 
 EXPECTED_SIGNATURE=$(wget -q -O - https://composer.github.io/installer.sig)
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -22,5 +22,5 @@ php composer-setup.php
 php -r "unlink('composer-setup.php');"
 mv composer.phar /usr/local/bin/composer
 
-sed_replace_word "COMPOSER_IS_INSTALLED=\"0"\" "COMPOSER_IS_INSTALLED=\"1"\" "/root/NeXt-Server-Buster/configs/userconfig.cfg"
+sed_replace_word "COMPOSER_IS_INSTALLED=\"0"\" "COMPOSER_IS_INSTALLED=\"1"\" "/root/NeXt-Server-Bullseye/configs/userconfig.cfg"
 }

@@ -5,7 +5,7 @@ update_all_services() {
 
 trap error_exit ERR
 
-source /root/NeXt-Server-Buster/configs/sources.cfg
+source /root/NeXt-Server-Bullseye/configs/sources.cfg
 
 #updating script code base before updating the server!
 update_script
@@ -24,7 +24,7 @@ if [[ ${NXT_IS_INSTALLED} == '1' ]] || [[ ${NXT_IS_INSTALLED_MAILSERVER} == '1' 
   update_fail2ban
 
   echo "15" | dialog --gauge "Updating firewall..." 10 70 0
-  #source /root/NeXt-Server-Buster/updates/firewall-update.sh; update_firewall
+  #source /root/NeXt-Server-Bullseye/updates/firewall-update.sh; update_firewall
 
   echo "30" | dialog --gauge "Updating Openssl..." 10 70 0
   update_openssl
