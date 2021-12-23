@@ -60,17 +60,15 @@ cat > /etc/apt/sources.list <<END
 #------------------------------------------------------------------------------#
 
 ###### Debian Main Repos
-deb http://deb.debian.org/debian/ Bullseye main contrib non-free
-deb-src http://deb.debian.org/debian/ Bullseye main contrib non-free
+deb http://deb.debian.org/debian/ bullseye main
+deb-src http://deb.debian.org/debian/ bullseye main
 
-deb http://security.debian.org/ Bullseye/updates main contrib non-free
-deb-src http://security.debian.org/ Bullseye/updates main contrib non-free
+deb http://security.debian.org/debian-security bullseye-security main
+deb-src http://security.debian.org/debian-security bullseye-security main
 
-deb http://deb.debian.org/debian/ Bullseye-updates main contrib non-free
-deb-src http://deb.debian.org/debian/ Bullseye-updates main contrib non-free
+deb http://deb.debian.org/debian/ bullseye-updates main
+deb-src http://deb.debian.org/debian/ bullseye-updates main
 
-deb http://deb.debian.org/debian/ Bullseye-backports main contrib non-free
-deb-src http://deb.debian.org/debian/ Bullseye-backports main contrib non-free
 END
 
 apt update -y >/dev/null 2>&1
