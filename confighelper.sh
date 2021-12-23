@@ -11,7 +11,6 @@ WIDTH=80
 
 # --- MYDOMAIN ---
 source /root/NeXt-Server-Bullseye/configs/sources.cfg
-rm -f /root/NeXt-Server-Bullseye/dns_settings.txt
 cp /root/NeXt-Server-Bullseye/configs/dns_settings_clean.txt /root/NeXt-Server-Bullseye/dns_settings.txt
 get_domain
 CHECK_DOMAIN_LENGTH=`echo -n ${DETECTED_DOMAIN} | wc -m`
