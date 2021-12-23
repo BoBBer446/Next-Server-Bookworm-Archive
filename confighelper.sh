@@ -11,6 +11,8 @@ WIDTH=80
 
 # --- MYDOMAIN ---
 source /root/NeXt-Server-Bullseye/configs/sources.cfg
+rm -f /root/NeXt-Server-Bullseye/dns_settings.txt
+cp /root/NeXt-Server-Bullseye/configs/dns_settings_clean.txt /root/NeXt-Server-Bullseye/dns_settings.txt
 get_domain
 CHECK_DOMAIN_LENGTH=`echo -n ${DETECTED_DOMAIN} | wc -m`
 
@@ -63,8 +65,6 @@ else
 fi
 
 # --- DNS Check ---
-rm -f /root/NeXt-Server-Bullseye/dns_settings.txt
-cp /root/NeXt-Server-Bullseye/configs/dns_settings_clean.txt /root/NeXt-Server-Bullseye/dns_settings.txt
 server_ip=$(ip route get 1.1.1.1 | awk '/1.1.1.1/ {print $(NF-2)}')
 sed_replace_word "server_ip" "$server_ip" "/root/NeXt-Server-Bullseye/dns_settings.txt"
 sed_replace_word "yourdomain.com" "$MYDOMAIN" "/root/NeXt-Server-Bullseye/dns_settings.txt"
