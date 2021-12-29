@@ -44,7 +44,10 @@ CHECKRDNS=$(dig @1.1.1.1 -x ${IPADR} +short)
 }
 
 get_domain() {
-  LOCAL_IP=$(hostname -I)
+  #
+  ### need case for Ipv6 only server ###
+  #
+  LOCAL_IP=$(hostname -I | awk '{print $1;}') 
   POSSIBLE_DOMAIN=$(dig -x ${LOCAL_IP} +short)
   DETECTED_DOMAIN=$(echo "${POSSIBLE_DOMAIN}" | awk -v FS='.' '{print $2 "." $3}')
 }
