@@ -5,7 +5,8 @@ install_managevmail() {
 
 trap error_exit ERR
 
-install_packages "python3 libprotobuf17 python3-protobuf"
+apt -y install python3 libprotobuf17 python3-protobuf
+#install_packages "python3 libprotobuf17 python3-protobuf"
 
 wget http://ftp.de.debian.org/debian/pool/main/m/mysql-connector-python/python3-mysql.connector_${MYSQL_CONNECTOR}_all.deb
 if [[ $? -ne 0 ]]; then

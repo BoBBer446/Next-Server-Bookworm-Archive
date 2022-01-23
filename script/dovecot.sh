@@ -7,8 +7,8 @@ trap error_exit ERR
 
 ###dirty
 dpkg -i /root/NeXt-Server-Bullseye/includes/ssl-cert_1.1.2_all.deb
-apt -y install dovecot-core dovecot-imapd dovecot-lmtpd dovecot-mysql dovecot-sieve dovecot-managesieved
-#install_packages "dovecot-core dovecot-imapd dovecot-lmtpd dovecot-mysql dovecot-sieve dovecot-managesieved"
+
+install_packages "dovecot-core dovecot-imapd dovecot-lmtpd dovecot-mysql dovecot-sieve dovecot-managesieved"
 
 systemctl stop dovecot
 mkdir -p /etc/dovecot
