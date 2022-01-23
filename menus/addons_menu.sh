@@ -8,23 +8,21 @@ set_logs
 
 HEIGHT=40
 WIDTH=80
-CHOICE_HEIGHT=12
+CHOICE_HEIGHT=10
 BACKTITLE="NeXt Server"
 TITLE="NeXt Server"
 MENU="Choose one of the following options:"
 
-OPTIONS=(1 "Install TS3 Server"
-         2 "Deinstall TS3 Server"
-         3 "Install Composer"
-         4 "Install Nextcloud"
-         5 "Deinstall Nextcloud"
-         6 "Install phpmyadmin"
-         7 "Deinstall phpmyadmin"
-         8 "Install Munin"
-         9 "Install Wordpress"
-         10 "Deinstall Wordpress"
-         11 "Back"
-         12 "Exit")
+OPTIONS=(1 "Install Composer"
+         2 "Install Nextcloud"
+         3 "Deinstall Nextcloud"
+         4 "Install phpmyadmin"
+         5 "Deinstall phpmyadmin"
+         6 "Install Munin"
+         7 "Install Wordpress"
+         8 "Deinstall Wordpress"
+         9 "Back"
+         10 "Exit")
 
 CHOICE=$(dialog --clear \
                 --nocancel \
@@ -41,37 +39,6 @@ case $CHOICE in
 
 1)
 if [[ ${NXT_IS_INSTALLED} == '1' ]] || [[ ${NXT_IS_INSTALLED_MAILSERVER} == '1' ]]; then
-    if [[ ${TS3_IS_INSTALLED} == '1' ]]; then
-        echo "Teamspeak 3 is already installed!"
-    else
-        dialog_info "Installing Teamspeak 3"
-        install_teamspeak3
-        dialog_msg "Finished installing Teamspeak 3! Credentials: /root/NeXt-Server-Bullseye/teamspeak3_login_data.txt"
-    fi
-else
-    echo "You have to install the NeXt Server to run this Addon!"
-fi
-continue_or_exit
-menu_options_addons
-;;
-
-2)
-if [[ ${TS3_IS_INSTALLED} == '0' ]]; then
-    echo "Teamspeak 3 is already deinstalled!"
-else
-    dialog_info "Deinstalling Teamspeak 3"
-    deinstall_teamspeak3
-    dialog_msg "Finished Deinstalling Teamspeak 3.\n
-    Closed Ports TCP: 2008, 10011, 30033, 41144\n
-    UDP: 2010, 9987\n
-    If you need them, please reopen them manually!"
-fi
-continue_or_exit
-menu_options_addons
-;;
-
-3)
-if [[ ${NXT_IS_INSTALLED} == '1' ]] || [[ ${NXT_IS_INSTALLED_MAILSERVER} == '1' ]]; then
     if [[ ${COMPOSER_IS_INSTALLED} == '1' ]]; then
         echo "Composer is already installed!"
     else
@@ -86,7 +53,7 @@ continue_or_exit
 menu_options_addons
 ;;
 
-4)
+2)
 if [[ ${NXT_IS_INSTALLED} == '1' ]] || [[ ${NXT_IS_INSTALLED_MAILSERVER} == '1' ]]; then
     if [[ ${NEXTCLOUD_IS_INSTALLED} == '1' ]]; then
         echo "Nextcloud is already installed!"
@@ -102,7 +69,7 @@ continue_or_exit
 menu_options_addons
 ;;
 
-5)
+3)
 if [[ ${NEXTCLOUD_IS_INSTALLED} == '0' ]]; then
     echo "Nextcloud is already deinstalled!"
 else
@@ -114,7 +81,7 @@ continue_or_exit
 menu_options_addons
 ;;
 
-6)
+4)
 if [[ ${NXT_IS_INSTALLED} == '1' ]] || [[ ${NXT_IS_INSTALLED_MAILSERVER} == '1' ]]; then
     if [[ ${PMA_IS_INSTALLED} == '1' ]]; then
         echo "Phpmyadmin is already installed!"
@@ -133,7 +100,7 @@ continue_or_exit
 menu_options_addons
 ;;
 
-7)
+5)
 if [[ ${PMA_IS_INSTALLED} == '0' ]]; then
     echo "Phpmyadmin is already deinstalled!"
 else
@@ -145,7 +112,7 @@ continue_or_exit
 menu_options_addons
 ;;
 
-8)
+6)
 if [[ ${NXT_IS_INSTALLED} == '1' ]] || [[ ${NXT_IS_INSTALLED_MAILSERVER} == '1' ]]; then
     if [[ ${MUNIN_IS_INSTALLED} == '1' ]]; then
         echo "Munin is already installed!"
@@ -162,7 +129,7 @@ continue_or_exit
 menu_options_addons
 ;;
 
-9)
+7)
 if [[ ${NXT_IS_INSTALLED} == '1' ]] || [[ ${NXT_IS_INSTALLED_MAILSERVER} == '1' ]]; then
     if [[ ${WORDPRESS_IS_INSTALLED} == '1' ]]; then
         echo "Wordpress is already installed!"
@@ -182,7 +149,7 @@ continue_or_exit
 menu_options_addons
 ;;
 
-10)
+8)
 if [[ ${WORDPRESS_IS_INSTALLED} == '0' ]]; then
     echo "Wordpress is already deinstalled!"
 else
@@ -194,11 +161,11 @@ continue_or_exit
 menu_options_addons
 ;;
 
-11)
+9)
 bash /root/NeXt-Server-Bullseye/nxt.sh
 ;;
 
-12)
+10)
 echo "Exit"
 exit 1
 ;;
