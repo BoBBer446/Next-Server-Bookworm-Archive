@@ -7,7 +7,7 @@ trap error_exit ERR
 
 source /root/NeXt-Server-Bullseye/configs/sources.cfg
 
-install_packages "unzip"
+install_packages "unzip php-gmp libmagickcore-6.q16-6-extra"
 
 MYSQL_ROOT_PASS=$(grep -Pom 1 "(?<=^MYSQL_ROOT_PASS: ).*$" /root/NeXt-Server-Bullseye/login_information.txt)
 NEXTCLOUD_USER=$(username)

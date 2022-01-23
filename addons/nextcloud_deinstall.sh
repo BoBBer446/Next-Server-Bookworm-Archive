@@ -6,6 +6,8 @@ deinstall_nextcloud() {
 
 trap error_exit ERR
 
+remove_packages "php-gmp libmagickcore-6.q16-6-extra"
+
 MYSQL_ROOT_PASS=$(grep -Pom 1 "(?<=^MYSQL_ROOT_PASS: ).*$" /root/NeXt-Server-Bullseye/login_information.txt)
 NextcloudDBName=$(grep -Pom 1 "(?<=^NextcloudDBName = ).*$" /root/NeXt-Server-Bullseye/nextcloud_login_data.txt)
 NextcloudDBUser=$(grep -Pom 1 "(?<=^NextcloudDBUser = ).*$" /root/NeXt-Server-Bullseye/nextcloud_login_data.txt)

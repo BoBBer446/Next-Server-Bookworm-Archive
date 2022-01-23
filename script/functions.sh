@@ -135,6 +135,15 @@ DEBIAN_FRONTEND=noninteractive apt -y install $1 >>"${main_log}" 2>>"${err_log}"
     fi
 }
 
+function remove_packages() {
+DEBIAN_FRONTEND=noninteractive apt -y remove $1 >>"${main_log}" 2>>"${err_log}" || error_exit "Failed to remove $1 packages"
+        ERROR=$?
+        if [[ "$ERROR" != '0' ]]; then
+      echo "Error: $1 had an error during removing."
+      exit
+    fi
+}
+
 error_exit() {
   #clear
   read line file <<<$(caller)
