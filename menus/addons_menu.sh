@@ -8,21 +8,20 @@ set_logs
 
 HEIGHT=40
 WIDTH=80
-CHOICE_HEIGHT=10
+CHOICE_HEIGHT=9
 BACKTITLE="NeXt Server"
 TITLE="NeXt Server"
 MENU="Choose one of the following options:"
 
-OPTIONS=(1 "Install Composer"
-         2 "Install Nextcloud"
-         3 "Deinstall Nextcloud"
-         4 "Install phpmyadmin"
-         5 "Deinstall phpmyadmin"
-         6 "Install Munin"
-         7 "Install Wordpress"
-         8 "Deinstall Wordpress"
-         9 "Back"
-         10 "Exit")
+OPTIONS=(1 "Install Nextcloud"
+         2 "Deinstall Nextcloud"
+         3 "Install phpmyadmin"
+         4 "Deinstall phpmyadmin"
+         5 "Install Munin"
+         6 "Install Wordpress"
+         7 "Deinstall Wordpress"
+         8 "Back"
+         9 "Exit")
 
 CHOICE=$(dialog --clear \
                 --nocancel \
@@ -39,22 +38,6 @@ case $CHOICE in
 
 1)
 if [[ ${NXT_IS_INSTALLED} == '1' ]] || [[ ${NXT_IS_INSTALLED_MAILSERVER} == '1' ]]; then
-    if [[ ${COMPOSER_IS_INSTALLED} == '1' ]]; then
-        echo "Composer is already installed!"
-    else
-        dialog_info "Installing Composer"
-        install_composer
-        dialog_msg "Finished installing Composer"
-    fi
-else
-    echo "You have to install the NeXt Server with the Webserver component to run this Addon!"
-fi
-continue_or_exit
-menu_options_addons
-;;
-
-2)
-if [[ ${NXT_IS_INSTALLED} == '1' ]] || [[ ${NXT_IS_INSTALLED_MAILSERVER} == '1' ]]; then
     if [[ ${NEXTCLOUD_IS_INSTALLED} == '1' ]]; then
         echo "Nextcloud is already installed!"
     else
@@ -69,7 +52,7 @@ continue_or_exit
 menu_options_addons
 ;;
 
-3)
+2)
 if [[ ${NEXTCLOUD_IS_INSTALLED} == '0' ]]; then
     echo "Nextcloud is already deinstalled!"
 else
@@ -81,7 +64,7 @@ continue_or_exit
 menu_options_addons
 ;;
 
-4)
+3)
 if [[ ${NXT_IS_INSTALLED} == '1' ]] || [[ ${NXT_IS_INSTALLED_MAILSERVER} == '1' ]]; then
     if [[ ${PMA_IS_INSTALLED} == '1' ]]; then
         echo "Phpmyadmin is already installed!"
@@ -100,7 +83,7 @@ continue_or_exit
 menu_options_addons
 ;;
 
-5)
+4)
 if [[ ${PMA_IS_INSTALLED} == '0' ]]; then
     echo "Phpmyadmin is already deinstalled!"
 else
@@ -112,7 +95,7 @@ continue_or_exit
 menu_options_addons
 ;;
 
-6)
+5)
 if [[ ${NXT_IS_INSTALLED} == '1' ]] || [[ ${NXT_IS_INSTALLED_MAILSERVER} == '1' ]]; then
     if [[ ${MUNIN_IS_INSTALLED} == '1' ]]; then
         echo "Munin is already installed!"
@@ -129,7 +112,7 @@ continue_or_exit
 menu_options_addons
 ;;
 
-7)
+6)
 if [[ ${NXT_IS_INSTALLED} == '1' ]] || [[ ${NXT_IS_INSTALLED_MAILSERVER} == '1' ]]; then
     if [[ ${WORDPRESS_IS_INSTALLED} == '1' ]]; then
         echo "Wordpress is already installed!"
@@ -149,7 +132,7 @@ continue_or_exit
 menu_options_addons
 ;;
 
-8)
+7)
 if [[ ${WORDPRESS_IS_INSTALLED} == '0' ]]; then
     echo "Wordpress is already deinstalled!"
 else
@@ -161,11 +144,11 @@ continue_or_exit
 menu_options_addons
 ;;
 
-9)
+8)
 bash /root/NeXt-Server-Bullseye/nxt.sh
 ;;
 
-10)
+9)
 echo "Exit"
 exit 1
 ;;
