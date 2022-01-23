@@ -1,7 +1,7 @@
 #!/bin/bash
 #Please check the license provided with the script!
 
-install_php_7_3() {
+install_php_7_4() {
 
 trap error_exit ERR
 
