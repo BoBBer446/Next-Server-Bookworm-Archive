@@ -24,7 +24,7 @@ create_nginx_cert() {
 systemctl -q stop nginx.service
 
 cd /root/NeXt-Server-Bullseye/sources/acme.sh/
-bash acme.sh --issue --standalone --debug 2 --log -d ${MYDOMAIN} -d www.${MYDOMAIN} --keylength ec-384 
+bash acme.sh --issue --nginx --debug 2 --log -d ${MYDOMAIN} -d www.${MYDOMAIN} --keylength ec-384 
 
 ln -s /root/.acme.sh/${MYDOMAIN}_ecc/fullchain.cer /etc/nginx/ssl/${MYDOMAIN}-ecc.cer 
 ln -s /root/.acme.sh/${MYDOMAIN}_ecc/${MYDOMAIN}.key /etc/nginx/ssl/${MYDOMAIN}-ecc.key 
