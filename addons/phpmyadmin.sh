@@ -17,7 +17,6 @@ PMADB_PASS=$(password)
 PMA_BFSECURE_PASS=$(password)
 
 cd /var/www/${MYDOMAIN}/public/
-export COMPOSER_ALLOW_SUPERUSER=1
 composer create-project phpmyadmin/phpmyadmin --repository-url=https://www.phpmyadmin.net/packages.json --no-dev
 
 mkdir -p /var/www/${MYDOMAIN}/public/${PHPMYADMIN_PATH_NAME}

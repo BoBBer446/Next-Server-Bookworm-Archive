@@ -1,7 +1,6 @@
 server {
     listen IPADR:443 ssl http2;
     #listen [IP6ADR]:443 ssl http2;
-
     server_name MYDOMAIN;
     set $base /var/www/MYDOMAIN;
     root $base/public;
@@ -50,7 +49,6 @@ server {
     # SSL
     ssl_certificate /etc/nginx/ssl/MYDOMAIN-ecc.cer;
     ssl_certificate_key /etc/nginx/ssl/MYDOMAIN-ecc.key;
-
     return 301 https://MYDOMAIN$request_uri;
 }
 
@@ -58,8 +56,6 @@ server {
 server {
     listen IPADR:80;
     #listen [IP6ADR]:80;
-
     server_name .MYDOMAIN;
-
     return 301 https://MYDOMAIN$request_uri;
 }
