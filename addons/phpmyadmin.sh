@@ -19,13 +19,12 @@ PMA_BFSECURE_PASS=$(password)
 cd /var/www/${MYDOMAIN}/public/
 composer create-project phpmyadmin/phpmyadmin --repository-url=https://www.phpmyadmin.net/packages.json --no-dev
 
-
 if [ "${PHPMYADMIN_PATH_NAME}" == "phpmyadmin" ]; then
-echo "phpmyadmin path unchanged" >>"${main_log}" 2>>"${err_log}"
+	echo "phpmyadmin path unchanged" >>"${main_log}" 2>>"${err_log}"
 else
-mkdir -p /var/www/${MYDOMAIN}/public/${PHPMYADMIN_PATH_NAME}
-mv phpmyadmin/* /var/www/${MYDOMAIN}/public/${PHPMYADMIN_PATH_NAME}/
-rm -R /var/www/${MYDOMAIN}/public/phpmyadmin/
+	mkdir -p /var/www/${MYDOMAIN}/public/${PHPMYADMIN_PATH_NAME}
+	mv phpmyadmin/* /var/www/${MYDOMAIN}/public/${PHPMYADMIN_PATH_NAME}/
+	rm -R /var/www/${MYDOMAIN}/public/phpmyadmin/
 fi
 
 htpasswd -b /etc/nginx/htpasswd/.htpasswd ${PMA_HTTPAUTH_USER} ${PMA_HTTPAUTH_PASS}
