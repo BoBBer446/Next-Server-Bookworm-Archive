@@ -55,6 +55,7 @@ echo "--------------------------------------------" >> /root/NeXt-Server-Bullsey
 echo "phpmyadmin" >> /root/NeXt-Server-Bullseye/phpmyadmin_login_data.txt
 echo "--------------------------------------------" >> /root/NeXt-Server-Bullseye/phpmyadmin_login_data.txt
 echo "" >> /root/NeXt-Server-Bullseye/phpmyadmin_login_data.txt
+echo "https://${MYDOMAIN}/${PHPMYADMIN_PATH_NAME}" >> /root/NeXt-Server-Bullseye/phpmyadmin_login_data.txt
 echo "PMA_HTTPAUTH_USER = ${PMA_HTTPAUTH_USER}" >> /root/NeXt-Server-Bullseye/phpmyadmin_login_data.txt
 echo "PMA_HTTPAUTH_PASS = ${PMA_HTTPAUTH_PASS}" >> /root/NeXt-Server-Bullseye/phpmyadmin_login_data.txt
 echo "" >> /root/NeXt-Server-Bullseye/phpmyadmin_login_data.txt

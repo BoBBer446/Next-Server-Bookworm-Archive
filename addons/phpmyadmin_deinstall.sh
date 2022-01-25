@@ -19,4 +19,5 @@ systemctl -q restart nginx.service
 
 sed_replace_word "$PHPMYADMIN_PATH_NAME" "" "/root/NeXt-Server-Bullseye/configs/blocked_paths.conf"
 sed_replace_word "PMA_IS_INSTALLED=\"1"\" "PMA_IS_INSTALLED=\"0"\" "/root/NeXt-Server-Bullseye/configs/userconfig.cfg"
+sed_replace_word "PHPMYADMIN_PATH_NAME=\".*"\" "PHPMYADMIN_PATH_NAME=\"0"\" "/root/NeXt-Server-Bullseye/configs/userconfig.cfg"
 }
