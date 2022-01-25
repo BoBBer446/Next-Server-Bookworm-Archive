@@ -53,6 +53,8 @@ echo "Open /etc/nginx/sites-available/${MYDOMAIN}.conf and delete the lines:" >>
 echo "location /webmail/ {" >> /root/NeXt-Server-Bullseye/login_information.txt
 echo 'auth_basic "Restricted";' >> /root/NeXt-Server-Bullseye/login_information.txt
 echo "}" >> /root/NeXt-Server-Bullseye/login_information.txt
+echo "After saving that file, please restart the nginx service:" >> /root/NeXt-Server-Bullseye/login_information.txt
+echo "service nginx restart" >> /root/NeXt-Server-Bullseye/login_information.txt
 echo "#------------------------------------------------------------------------------#" >> /root/NeXt-Server-Bullseye/login_information.txt
 echo "" >> /root/NeXt-Server-Bullseye/login_information.txt
 }
