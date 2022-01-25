@@ -18,7 +18,7 @@ else
   rm -R /var/www/${MYDOMAIN}/public/wp-content/
   rm -R /var/www/${MYDOMAIN}/public/wp-includes/
   rm /var/www/${MYDOMAIN}/public/{license.txt,readme.html,wp-activate.php,wp-blog-header.php,wp-config.php,wp-load.php,wp-mail.php,wp-signup.php,xmlrpc.php,index.php,wp-comments-post.php,wp-config-sample.php,wp-cron.php,wp-links-opml.php,wp-login.php,wp-settings.php,wp-trackback.php}
-  cp /var/www/${MYDOMAIN}/public/index-files-backup/* /var/www/next-server.eu/public/
+  cp /var/www/${MYDOMAIN}/public/index-files-backup/* /var/www/${MYDOMAIN}/public/
   rm -R /var/www/${MYDOMAIN}/public/index-files-backup/
 fi
 

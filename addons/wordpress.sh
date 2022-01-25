@@ -33,11 +33,11 @@ if [ "$WORDPRESS_PATH_NAME" != "root" ]; then
   fi
 else
   mkdir -p /var/www/${MYDOMAIN}/public/index-files-backup
-  if [ -f /var/www/next-server.eu/public/index.php ]; then
-     mv /var/www/next-server.eu/public/index.php /var/www/next-server.eu/public/index-files-backup
+  if [ -f /var/www/${MYDOMAIN}/public/index.php ]; then
+     mv /var/www/${MYDOMAIN}/public/index.php /var/www/${MYDOMAIN}/public/index-files-backup
   fi
-  if [ -f /var/www/next-server.eu/public/index.html ]; then
-     mv /var/www/next-server.eu/public/index.html /var/www/next-server.eu/public/index-files-backup
+  if [ -f /var/www/${MYDOMAIN}/public/index.html ]; then
+     mv /var/www/${MYDOMAIN}/public/index.html /var/www/${MYDOMAIN}/public/index-files-backup
   fi
   mv /var/www/${MYDOMAIN}/public/wordpress/* /var/www/${MYDOMAIN}/public/
   rm -R /var/www/${MYDOMAIN}/public/wordpress/
