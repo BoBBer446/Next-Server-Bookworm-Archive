@@ -75,11 +75,7 @@ mkdir -p /var/www/${MYDOMAIN}/public
 mkdir -p /var/cache/nginx
 mkdir -p /var/log/nginx/
 
-cd /root/NeXt-Server-Bullseye
-
-wget_tar "-O /etc/init.d/nginx -c4 --no-check-certificate https://raw.githubusercontent.com/Fleshgrinder/nginx-sysvinit-script/master/init"
-chmod 0755 /etc/init.d/nginx 
-chown root:root /etc/init.d/nginx 
+cp /root/NeXt-Server-Bullseye/configs/nginx/confs/nginx.service /lib/systemd/system/
 
 update-rc.d nginx defaults 
 
