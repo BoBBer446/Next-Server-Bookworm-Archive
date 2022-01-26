@@ -69,7 +69,7 @@ echo "PMADB_PASS = ${PMADB_PASS}" >> /root/NeXt-Server-Bullseye/phpmyadmin_login
 echo "" >> /root/NeXt-Server-Bullseye/phpmyadmin_login_data.txt
 echo "blowfish_secret = ${PMA_BFSECURE_PASS}" >> /root/NeXt-Server-Bullseye/phpmyadmin_login_data.txt
 
-sed_replace_word "PMA_IS_INSTALLED="0"" "PMA_IS_INSTALLED="1"" "/root/NeXt-Server-Bullseye/configs/userconfig.cfg"
+sed_replace_word "PMA_IS_INSTALLED=\"0"\" "PMA_IS_INSTALLED=\"1"\" "/root/NeXt-Server-Bullseye/configs/userconfig.cfg"
 echo "${PHPMYADMIN_PATH_NAME}" >> /root/NeXt-Server-Bullseye/configs/blocked_paths.conf
 
 dialog_msg "Please save the shown login information on next page"
