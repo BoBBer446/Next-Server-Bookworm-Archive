@@ -8,7 +8,7 @@ trap error_exit ERR
 systemctl -q stop nginx.service
 mkdir -p /etc/nginx/ssl/
 
-install_packages "cron netcat-openbsd curl socat"
+install_packages "cron netcat-openbsd socat"
 cd /root/NeXt-Server-Bullseye/sources
 git clone https://github.com/Neilpang/acme.sh.git -q 
 cd ./acme.sh
