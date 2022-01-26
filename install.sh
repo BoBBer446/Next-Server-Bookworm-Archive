@@ -49,7 +49,7 @@ progress_gauge "68" "Creating Let's Encrypt Certificate..."
 create_nginx_cert
 
 progress_gauge "74" "Installing PHP..."
-install_php_8_1
+install_php_8_0
 
 progress_gauge "75" "Installing Mailserver..."
 if [[ ${USE_MAILSERVER} = "1" ]]; then

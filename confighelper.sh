@@ -170,7 +170,7 @@ You can change your choice at the end of the confighelper, if you select no rest
 ;;
 esac
 
-PHPVERSION8="8.1"
+PHPVERSION8="8.0"
 NXT_SYSTEM_EMAIL="admin@${MYDOMAIN}"
 IPV6NETINPUT="fe80::1"
 CONFIG_COMPLETED="1"
