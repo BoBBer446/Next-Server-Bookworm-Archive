@@ -77,8 +77,6 @@ mkdir -p /var/log/nginx/
 
 cp /root/NeXt-Server-Bullseye/configs/nginx/confs/nginx.service /lib/systemd/system/
 
-update-rc.d nginx defaults 
-
 rm -rf /etc/nginx/nginx.conf
 cp /root/NeXt-Server-Bullseye/configs/nginx/confs/* /etc/nginx/
 
