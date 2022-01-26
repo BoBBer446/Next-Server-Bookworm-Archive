@@ -170,7 +170,7 @@ You can change your choice at the end of the confighelper, if you select no rest
 ;;
 esac
 
-PHPVERSION8="8.0"
+PHPVERSION7="7.4"
 NXT_SYSTEM_EMAIL="admin@${MYDOMAIN}"
 IPV6NETINPUT="fe80::1"
 CONFIG_COMPLETED="1"
@@ -186,7 +186,7 @@ cat >> /root/NeXt-Server-Bullseye/configs/userconfig.cfg <<END
 CONFIG_COMPLETED="${CONFIG_COMPLETED}"
 MYDOMAIN="${MYDOMAIN}"
 USE_MAILSERVER="${USE_MAILSERVER}"
-PHPVERSION8="${PHPVERSION8}"
+PHPVERSION7="${PHPVERSION7}"
 IP6ADR="${IPV6ADRINPUT}"
 IPV6GAT="${IPV6GATINPUT}"
 IPV6NET="${IPV6NETINPUT}"

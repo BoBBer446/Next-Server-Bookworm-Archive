@@ -18,7 +18,7 @@ sed_replace_word "#include _munin.conf;" "include _munin.conf;" "/etc/nginx/site
 sed_replace_word "localhost.localdomain" "mail.${MYDOMAIN}" "/etc/munin/munin.conf"
 sed_replace_word "change_path" "${MUNIN_PATH_NAME}" "/etc/nginx/_munin.conf"
 
-systemctl -q restart php$PHPVERSION8-fpm.service
+systemctl -q restart php$PHPVERSION7-fpm.service
 systemctl -q restart munin-node 
 systemctl -q restart nginx.service
 

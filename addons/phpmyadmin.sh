@@ -47,7 +47,7 @@ sed_replace_word "MYDOMAIN" "${MYDOMAIN}" "/etc/nginx/_phpmyadmin.conf"
 
 chown -R www-data:www-data /var/www/${MYDOMAIN}/public/${PHPMYADMIN_PATH_NAME}/
 
-systemctl -q restart php$PHPVERSION8-fpm.service
+systemctl -q restart php$PHPVERSION7-fpm.service
 systemctl -q reload nginx.service
 
 touch /root/NeXt-Server-Bullseye/phpmyadmin_login_data.txt

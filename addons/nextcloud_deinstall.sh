@@ -20,7 +20,7 @@ rm /root/NeXt-Server-Bullseye/nextcloud_login_data.txt
 rm /etc/nginx/_nextcloud.conf
 sed_replace_word "include _nextcloud.conf;" "#include _nextcloud.conf;" "/etc/nginx/sites-available/${MYDOMAIN}.conf"
 
-systemctl -q restart php$PHPVERSION8-fpm.service
+systemctl -q restart php$PHPVERSION7-fpm.service
 systemctl -q restart nginx.service
 
 sed_replace_word "$NEXTCLOUD_PATH_NAME" "" "/root/NeXt-Server-Bullseye/configs/blocked_paths.conf"

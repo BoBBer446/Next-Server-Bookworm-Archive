@@ -14,7 +14,7 @@ rm /etc/nginx/_phpmyadmin.conf
 
 sed_replace_word "include _phpmyadmin.conf;" "#include _phpmyadmin.conf;" "/etc/nginx/sites-available/${MYDOMAIN}.conf"
 
-systemctl -q restart php$PHPVERSION8-fpm.service
+systemctl -q restart php$PHPVERSION7-fpm.service
 systemctl -q restart nginx.service
 
 sed_replace_word "$PHPMYADMIN_PATH_NAME" "" "/root/NeXt-Server-Bullseye/configs/blocked_paths.conf"
