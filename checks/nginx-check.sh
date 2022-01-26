@@ -6,11 +6,11 @@ check_nginx() {
 failed_nginx_checks=0
 passed_nginx_checks=0
 
-if [ -e /etc/init.d/nginx ]; then
+if [ -e /lib/systemd/system/nginx.service ]; then
   passed_nginx_checks=$((passed_nginx_checks + 1))
 else
   failed_nginx_checks=$((failed_nginx_checks + 1))
-  echo "${error} nginx init does NOT exist" >>"${failed_checks_log}"
+  echo "${error} nginx systemd does NOT exist" >>"${failed_checks_log}"
 fi
 
 if [ -e /etc/nginx/nginx.conf ]; then
