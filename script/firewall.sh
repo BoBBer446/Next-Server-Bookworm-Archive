@@ -102,5 +102,5 @@ cp \$BLACKLIST_TEMP \${BLACKLIST_DIR}/blacklist\_\$(date '+%d.%m.%Y_%T' | tr -d 
 END
 chmod +x /etc/cron.daily/blocked-hosts
 
-systemctl -q restart {nginx,php8.0-fpm}
+systemctl -q restart {nginx,php$PHPVERSION8-fpm}
 }
