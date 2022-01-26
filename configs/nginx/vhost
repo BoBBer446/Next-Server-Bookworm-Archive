@@ -12,22 +12,9 @@ server {
     # security
     include security.conf;
 
-    # logging
-    access_log /var/log/nginx/MYDOMAIN.access.log;
-    error_log /var/log/nginx/MYDOMAIN.error.log warn;
-
-    # index.php
-    index       index.php index.html index.htm;
-
-    # handle .php
-    location ~ \.php$ {
-    include _php_fastcgi.conf;
-    }
-
-    auth_basic_user_file htpasswd/.htpasswd;
-
-    location /webmail/ {
-        auth_basic "Restricted";
+    # index.php fallback
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
     }
 
     include _general.conf;
@@ -37,6 +24,18 @@ server {
     #include _nextcloud.conf;
     #include _phpmyadmin.conf;
     #include _munin.conf;
+
+    # handle .php
+    location ~ \.php$ {
+        fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
+        include      _php_fastcgi.conf;
+    }
+
+    auth_basic_user_file htpasswd/.htpasswd;
+
+    location /webmail/ {
+        auth_basic "Restricted";
+    }
 }
 
 # subdomains redirect
