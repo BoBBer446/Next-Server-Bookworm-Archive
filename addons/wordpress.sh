@@ -69,7 +69,7 @@ find . -type d -exec chmod 755 {} \;
 cp /root/NeXt-Server-Bullseye/addons/vhosts/_wordpress.conf /etc/nginx/_wordpress.conf
 sed_replace_word "#include _wordpress.conf;" "include _wordpress.conf;" "/etc/nginx/sites-available/${MYDOMAIN}.conf"
 
-systemctl -q restart php$PHPVERSION7-fpm.service
+systemctl -q restart php$PHPVERSION8-fpm.service
 systemctl restart nginx
 
 touch /root/NeXt-Server-Bullseye/wordpress_login_data.txt

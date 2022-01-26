@@ -37,7 +37,7 @@ cp /root/NeXt-Server-Bullseye/addons/vhosts/_nextcloud.conf /etc/nginx/_nextclou
 sed_replace_word "#include _nextcloud.conf;" "include _nextcloud.conf;" "/etc/nginx/sites-available/${MYDOMAIN}.conf"
 sed_replace_word "change_path" "${NEXTCLOUD_PATH_NAME}" "/etc/nginx/_nextcloud.conf"
 
-systemctl -q restart php$PHPVERSION7-fpm.service
+systemctl -q restart php$PHPVERSION8-fpm.service
 systemctl -q reload nginx.service
 
 touch /root/NeXt-Server-Bullseye/nextcloud_login_data.txt
