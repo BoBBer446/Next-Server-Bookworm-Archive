@@ -62,8 +62,8 @@ NGINX_MODULES="--without-http_browser_module \
 --add-module=/root/NeXt-Server-Bullseye/sources/headers-more-nginx-module-${NGINX_HEADER_MOD_VERSION}"
 
 ./configure $NGINX_OPTIONS $NGINX_MODULES --with-cc-opt='-O2 -g -pipe -Wall -Wformat -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong -m64 -mtune=generic' 
-make -j $(nproc) 
-make install 
+make -j $(nproc) >>"${make_log}" 2>>"${make_err_log}"  
+make install >>"${make_log}" 2>>"${make_err_log}" 
 
 rm -R /root/NeXt-Server-Bullseye/sources/nginx-${NGINX_VERSION}
 
