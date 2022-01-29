@@ -159,7 +159,7 @@ Please read through our [contributing guidelines](https://github.com/twbs/bootst
 
 ## Creators
 
-**Marcel Gössel**
+**Marcel Eichlohn**
 
 - <https://github.com/shoujii>
 
@@ -197,5 +197,5 @@ A big thanks to [George Liu], for some great lines of code!.
 
 ## Copyright and license
 
-Code and documentation copyright 2017-2020 the [NeXt-Server-Bullseye Authors](https://github.com/shoujii/NeXt-Server-Bullseye/graphs/contributors)
+Code and documentation copyright 2017-2022 the [NeXt-Server-Bullseye Authors](https://github.com/shoujii/NeXt-Server-Bullseye/graphs/contributors)
 Code released under the [GNU General Public License v3.0](https://github.com/shoujii/NeXt-Server-Bullseye/blob/master/LICENSE).

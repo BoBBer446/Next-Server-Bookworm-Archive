@@ -12,6 +12,13 @@ install_packages "php$PHPVERSION7-dev php$PHPVERSION7-fpm php-auth-sasl php$PHPV
 sed_replace_word "memory_limit = 128M" "memory_limit = 512M" "/etc/php/$PHPVERSION7/fpm/php.ini"
 sed_replace_word "upload_max_filesize = 2M" "upload_max_filesize = 512M" "/etc/php/$PHPVERSION7/fpm/php.ini"
 
+#uncomment various env -> Nextcloud
+sed_replace_word ";env\[HOSTNAME\] = \$HOSTNAME" "env[HOSTNAME] = \$HOSTNAME" "/etc/php/$PHPVERSION7/fpm/pool.d/www.conf"
+sed_replace_word ";env\[PATH] = /usr/local/bin:/usr/bin:/bin" "env\[PATH] = /usr/local/bin:/usr/bin:/bin" "/etc/php/$PHPVERSION7/fpm/pool.d/www.conf"
+sed_replace_word ";env\[TMP] = /tmp" "env\[TMP] = /tmp" "/etc/php/$PHPVERSION7/fpm/pool.d/www.conf"
+sed_replace_word ";env\[TMPDIR] = /tmp" "env\[TMPDIR] = /tmp" "/etc/php/$PHPVERSION7/fpm/pool.d/www.conf"
+sed_replace_word ";env\[TEMP] = /tmp" "env\[TEMP] = /tmp" "/etc/php/$PHPVERSION7/fpm/pool.d/www.conf"
+
 systemctl -q restart nginx.service
 systemctl -q restart php$PHPVERSION7-fpm.service
 }
