@@ -31,7 +31,7 @@ else
   cd ${NEXTCLOUD_PATH_NAME}
 fi
 
-chown -R www-data: /var/www/${MYDOMAIN}/public/${NEXTCLOUD_PATH_NAME}
+chown -R www-data:www-data /var/www/${MYDOMAIN}/public/${NEXTCLOUD_PATH_NAME}
 
 cp /root/NeXt-Server-Bullseye/addons/vhosts/_nextcloud.conf /etc/nginx/_nextcloud.conf
 sed_replace_word "#include _nextcloud.conf;" "include _nextcloud.conf;" "/etc/nginx/sites-available/${MYDOMAIN}.conf"
