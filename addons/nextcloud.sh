@@ -36,6 +36,7 @@ chown -R www-data: /var/www/${MYDOMAIN}/public/${NEXTCLOUD_PATH_NAME}
 cp /root/NeXt-Server-Bullseye/addons/vhosts/_nextcloud.conf /etc/nginx/_nextcloud.conf
 sed_replace_word "#include _nextcloud.conf;" "include _nextcloud.conf;" "/etc/nginx/sites-available/${MYDOMAIN}.conf"
 sed_replace_word "change_path" "${NEXTCLOUD_PATH_NAME}" "/etc/nginx/_nextcloud.conf"
+sed_replace_word "MYDOMAIN" "${MYDOMAIN}" "/etc/nginx/_nextcloud.conf"
 
 systemctl -q restart php$PHPVERSION7-fpm.service
 systemctl -q reload nginx.service
