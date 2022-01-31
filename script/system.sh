@@ -38,13 +38,14 @@ hostnamectl set-hostname --static mail
 rm /etc/hosts
 cat > /etc/hosts <<END
 127.0.0.1   localhost
-127.0.1.1   mail.domain.tld  mail
+IPADR   mail.domain.tld  mail
 
 ::1         localhost ip6-localhost ip6-loopback
 ff02::1     ip6-allnodes
 ff02::2     ip6-allrouters
 END
 sed_replace_word "domain.tld" "${MYDOMAIN}" "/etc/hosts"
+sed_replace_word "IPADR" "${IPADR}" "/etc/hosts"
 
 echo $(hostname -f) > /etc/mailname
 

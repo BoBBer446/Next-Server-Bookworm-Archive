@@ -9,6 +9,8 @@ install_packages "postfix postfix-mysql"
 
 systemctl stop postfix
 
+rm /etc/postfix/./makedefs.out; ln /usr/share/postfix/makedefs.out /etc/postfix/./makedefs.out
+
 cd /etc/postfix
 rm -r sasl
 rm master.cf main.cf.proto master.cf.proto

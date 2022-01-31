@@ -35,6 +35,7 @@ sed_replace_word "rcdbuser" "${ROUNDCUBE_USER}" "/var/www/${MYDOMAIN}/public/web
 sed_replace_word "rcdbpassword" "${ROUNDCUBE_DB_PASS}" "/var/www/${MYDOMAIN}/public/webmail/config/config.inc.php"
 sed_replace_word "rcdbname" "${ROUNDCUBE_DB_NAME}" "/var/www/${MYDOMAIN}/public/webmail/config/config.inc.php"
 sed_replace_word "deskey" "${RANDOM_DESKEY}" "/var/www/${MYDOMAIN}/public/webmail/config/config.inc.php"
+sed_replace_word "MYDOMAIN" "${MYDOMAIN}" "/var/www/${MYDOMAIN}/public/webmail/config/config.inc.php"
 
 sudo rm -rf /var/www/nxtsrv.de/public/webmail/installer/
 
