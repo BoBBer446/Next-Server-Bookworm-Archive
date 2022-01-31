@@ -14,6 +14,8 @@ systemctl stop dovecot
 mkdir -p /etc/dovecot
 cd /etc/dovecot
 
+
+####### change 4096
 openssl dhparam -out /etc/dovecot/dh.pem 2048 >/dev/null 2>&1
 cp /root/NeXt-Server-Bullseye/configs/dovecot/dovecot.conf /etc/dovecot/dovecot.conf
 sed_replace_word "domain.tld" "${MYDOMAIN}" "/etc/dovecot/dovecot.conf"
