@@ -8,8 +8,6 @@ trap error_exit ERR
 install_packages "rspamd"
 systemctl stop rspamd
 
-cp /root/NeXt-Server-Bullseye/configs/rspamd/options.inc /etc/rspamd/local.d/options.inc
-cp /root/NeXt-Server-Bullseye/configs/rspamd/worker-normal.inc /etc/rspamd/local.d/worker-normal.inc
 cp /root/NeXt-Server-Bullseye/configs/rspamd/classifier-bayes.conf /etc/rspamd/local.d/classifier-bayes.conf
 
 RSPAMADM_PASSWORT=$(password)
@@ -49,9 +47,16 @@ $new_file$hash_temp
 END
 fi
 
-cp /root/NeXt-Server-Bullseye/configs/rspamd/worker-proxy.inc /etc/rspamd/local.d/worker-proxy.inc
 cp /root/NeXt-Server-Bullseye/configs/rspamd/logging.inc /etc/rspamd/local.d/logging.inc
 cp /root/NeXt-Server-Bullseye/configs/rspamd/milter_headers.conf /etc/rspamd/local.d/milter_headers.conf
+cp /root/NeXt-Server-Bullseye/configs/rspamd/multimap.conf /etc/rspamd/local.d/multimap.conf
+
+cd /etc/rspamd/local.d
+touch whitelist_ip.map
+touch whitelist_from.map
+touch blacklist_ip.map
+touch blacklist_from.map
+cd - 
 
 CURRENT_YEAR=$(date +'%Y')
 

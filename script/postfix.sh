@@ -13,10 +13,11 @@ cd /etc/postfix
 rm -r sasl
 rm master.cf main.cf.proto master.cf.proto
 
+openssl dhparam -out /etc/postfix/dh.pem 2048 >/dev/null 2>&1
 cp /root/NeXt-Server-Bullseye/configs/postfix/main.cf /etc/postfix/main.cf
 sed_replace_word "domain.tld" "${MYDOMAIN}" "/etc/postfix/main.cf"
-IPADR=$(ip route get 1.1.1.1 | awk '/1.1.1.1/ {print $(NF-2)}')
-sed_replace_word "changeme" "${IPADR}" "/etc/postfix/main.cf"
+sed_replace_word "IPADR" "${IPADR}" "/etc/postfix/main.cf"
+sed_replace_word "IP6ADR" "${IP6ADR}" "/etc/postfix/main.cf"
 
 cp /root/NeXt-Server-Bullseye/configs/postfix/master.cf /etc/postfix/master.cf
 cp /root/NeXt-Server-Bullseye/configs/postfix/submission_header_cleanup /etc/postfix/submission_header_cleanup
@@ -29,11 +30,10 @@ sed_replace_word "placeholder" "${MAILSERVER_DB_PASS}" "/etc/postfix/sql/domains
 sed_replace_word "placeholder" "${MAILSERVER_DB_PASS}" "/etc/postfix/sql/recipient-access.cf"
 sed_replace_word "placeholder" "${MAILSERVER_DB_PASS}" "/etc/postfix/sql/sender-login-maps.cf"
 sed_replace_word "placeholder" "${MAILSERVER_DB_PASS}" "/etc/postfix/sql/tls-policy.cf"
-chmod -R 640 /etc/postfix/sql
+chown -R root:postfix /etc/postfix/sql
+chmod g+x /etc/postfix/sql
 
 touch /etc/postfix/without_ptr
-touch /etc/postfix/postscreen_access
-
 postmap /etc/postfix/without_ptr
 newaliases
 }

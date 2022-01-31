@@ -1,5 +1,5 @@
 user = vmail
 password = placeholder
-hosts = 127.0.0.1
+hosts = unix:/run/mysqld/mysqld.sock
 dbname = vmail
-query = SELECT domain FROM domains WHERE domain='%s'
+query = SELECT domain FROM domains WHERE domain='%s';
