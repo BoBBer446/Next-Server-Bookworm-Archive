@@ -27,13 +27,6 @@ else
   echo "${error} _general.conf does NOT exist" >>"${failed_checks_log}"
 fi
 
-if [ -e /etc/nginx/_pagespeed.conf ]; then
-  passed_nginx_checks=$((passed_nginx_checks + 1))
-else
-  failed_nginx_checks=$((failed_nginx_checks + 1))
-  echo "${error} _pagespeed.conf does NOT exist" >>"${failed_checks_log}"
-fi
-
 if [ -e /etc/nginx/_php_fastcgi.conf ]; then
   passed_nginx_checks=$((passed_nginx_checks + 1))
 else

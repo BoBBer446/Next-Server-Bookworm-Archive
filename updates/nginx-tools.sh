@@ -66,18 +66,6 @@ update_nginx() {
   tar -xzf openssl-${OPENSSL_VERSION}.tar.gz >>"$main_log" 2>>"$err_log"
 
   cd /root/NeXt-Server-Bullseye/updates/sources/
-  wget_tar "https://codeload.github.com/pagespeed/ngx_pagespeed/zip/v${NPS_VERSION}"
-  unzip_file "v${NPS_VERSION}"
-  cd incubator-pagespeed-ngx-${NPS_VERSION}/
-
-  wget_tar "https://dl.google.com/dl/page-speed/psol/${PSOL_VERSION}-x64.tar.gz"
-  tar_file "${PSOL_VERSION}-x64.tar.gz"
-
-  cd /root/NeXt-Server-Bullseye/updates/sources/
-  wget_tar "https://codeload.github.com/openresty/headers-more-nginx-module/zip/v${NGINX_HEADER_MOD_VERSION}"
-  unzip_file "v${NGINX_HEADER_MOD_VERSION}"
-
-  cd /root/NeXt-Server-Bullseye/updates/sources/
   git clone https://github.com/nbs-system/naxsi.git -q
 
   systemctl -q stop nginx.service
@@ -131,9 +119,7 @@ update_nginx() {
   --with-http_gunzip_module \
   --with-openssl-opt=enable-tls1_3 \
   --with-openssl=/root/NeXt-Server-Bullseye/updates/sources/openssl-${OPENSSL_VERSION} \
-  --add-module=/root/NeXt-Server-Bullseye/updates/sources/naxsi/naxsi_src \
-  --add-module=/root/NeXt-Server-Bullseye/updates/sources/incubator-pagespeed-ngx-${NPS_VERSION} \
-  --add-module=/root/NeXt-Server-Bullseye/updates/sources/headers-more-nginx-module-${NGINX_HEADER_MOD_VERSION}"
+  --add-module=/root/NeXt-Server-Bullseye/updates/sources/naxsi/naxsi_src"
 
   ./configure $NGINX_OPTIONS $NGINX_MODULES --with-cc-opt='-O2 -g -pipe -Wall -Wformat -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong -m64 -mtune=generic'
   make -j $(nproc) >>"${make_log}" 2>>"${make_err_log}"

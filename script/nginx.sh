@@ -57,9 +57,7 @@ NGINX_MODULES="--without-http_browser_module \
 --with-http_gunzip_module \
 --with-openssl-opt=enable-tls1_3 \
 --with-openssl=/root/NeXt-Server-Bullseye/sources/openssl-${OPENSSL_VERSION} \
---add-module=/root/NeXt-Server-Bullseye/sources/naxsi/naxsi_src \
---add-module=/root/NeXt-Server-Bullseye/sources/incubator-pagespeed-ngx-${NPS_VERSION} \
---add-module=/root/NeXt-Server-Bullseye/sources/headers-more-nginx-module-${NGINX_HEADER_MOD_VERSION}"
+--add-module=/root/NeXt-Server-Bullseye/sources/naxsi/naxsi_src"
 
 ./configure $NGINX_OPTIONS $NGINX_MODULES --with-cc-opt='-O2 -g -pipe -Wall -Wformat -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong -m64 -mtune=generic' 
 make -j $(nproc) >>"${make_log}" 2>>"${make_err_log}"  
@@ -83,7 +81,6 @@ cp /root/NeXt-Server-Bullseye/configs/nginx/confs/* /etc/nginx/
 rm -rf /etc/nginx/sites-available/${MYDOMAIN}.conf
 cp /root/NeXt-Server-Bullseye/configs/nginx/vhost /etc/nginx/sites-available/${MYDOMAIN}.conf
 sed_replace_word "MYDOMAIN" "${MYDOMAIN}" "/etc/nginx/sites-available/${MYDOMAIN}.conf"
-sed_replace_word "MYDOMAIN" "${MYDOMAIN}" "/etc/nginx/_pagespeed.conf"
 
 if [[ ${IPV4_ONLY} = "1" ]]; then
   sed_replace_word "IPADR" "${IPADR}" "/etc/nginx/sites-available/${MYDOMAIN}.conf"
