@@ -76,13 +76,6 @@ else
   echo "${error} without_ptr does NOT exist" >>"${failed_checks_log}"
 fi
 
-if [ -e /etc/postfix/postscreen_access ]; then
-  passed_postfix_checks=$((passed_postfix_checks + 1))
-else
-  failed_postfix_checks=$((failed_postfix_checks + 1))
-  echo "${error} postscreen_access does NOT exist" >>"${failed_checks_log}"
-fi
-
 echo "Postfix:"
 echo "${ok} ${passed_postfix_checks} checks passed!"
 

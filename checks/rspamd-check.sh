@@ -6,20 +6,6 @@ check_rspamd() {
 failed_rspamd_checks=0
 passed_rspamd_checks=0
 
-if [ -e /etc/rspamd/local.d/options.inc ]; then
-  passed_rspamd_checks=$((passed_rspamd_checks + 1))
-else
-  failed_rspamd_checks=$((failed_rspamd_checks + 1))
-  echo "${error} options.inc does NOT exist" >>"${failed_checks_log}"
-fi
-
-if [ -e /etc/rspamd/local.d/worker-normal.inc ]; then
-  passed_rspamd_checks=$((passed_rspamd_checks + 1))
-else
-  failed_rspamd_checks=$((failed_rspamd_checks + 1))
-  echo "${error} worker-normal.inc does NOT exist" >>"${failed_checks_log}"
-fi
-
 if [ -e /etc/rspamd/local.d/classifier-bayes.conf ]; then
   passed_rspamd_checks=$((passed_rspamd_checks + 1))
 else
@@ -32,13 +18,6 @@ if [ -e /etc/rspamd/local.d/worker-controller.inc ]; then
 else
   failed_rspamd_checks=$((failed_rspamd_checks + 1))
   echo "${error} worker-controller.inc does NOT exist" >>"${failed_checks_log}"
-fi
-
-if [ -e /etc/rspamd/local.d/worker-proxy.inc ]; then
-  passed_rspamd_checks=$((passed_rspamd_checks + 1))
-else
-  failed_rspamd_checks=$((failed_rspamd_checks + 1))
-  echo "${error} worker-proxy.inc does NOT exist" >>"${failed_checks_log}"
 fi
 
 if [ -e /etc/rspamd/local.d/logging.inc ]; then
