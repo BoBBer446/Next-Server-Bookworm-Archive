@@ -13,7 +13,7 @@ cd /root/NeXt-Server-Bullseye/sources
 git clone https://github.com/Neilpang/acme.sh.git -q 
 cd ./acme.sh
 sleep 1
-./acme.sh --install --accountemail ${NXT_SYSTEM_EMAIL} 
+./acme.sh --install --accountemail ${NXT_SYSTEM_EMAIL} >>"${main_log}" 2>>"${err_log}" || error_exit 
 
 . ~/.bashrc 
 . ~/.profile 
@@ -25,8 +25,8 @@ systemctl -q stop nginx.service
 
 cd /root/NeXt-Server-Bullseye/sources/acme.sh/
 
-bash acme.sh --set-default-ca --server letsencrypt
-bash acme.sh --issue --standalone --debug 2 --log -d ${MYDOMAIN} -d www.${MYDOMAIN} --keylength ec-384 
+bash acme.sh --set-default-ca --server letsencrypt >>"${main_log}" 2>>"${err_log}" || error_exit
+bash acme.sh --issue --standalone --debug 2 --log -d ${MYDOMAIN} -d www.${MYDOMAIN} --keylength ec-384 >>"${main_log}" 2>>"${err_log}" || error_exit
 
 ln -s /root/.acme.sh/${MYDOMAIN}_ecc/fullchain.cer /etc/nginx/ssl/${MYDOMAIN}-ecc.cer 
 ln -s /root/.acme.sh/${MYDOMAIN}_ecc/${MYDOMAIN}.key /etc/nginx/ssl/${MYDOMAIN}-ecc.key 
@@ -62,8 +62,8 @@ sed -i "s/"${HPKP1}"/HPKP1/g" /etc/nginx/security.conf
 sed -i "s/"${HPKP2}"/HPKP2/g" /etc/nginx/security.conf
 
 cd /root/NeXt-Server-Bullseye/sources/acme.sh/
-bash acme.sh --set-default-ca --server letsencrypt
-bash acme.sh --issue --standalone --debug 2 --log -d ${MYDOMAIN} -d www.${MYDOMAIN} --keylength ec-384 
+bash acme.sh --set-default-ca --server letsencrypt >>"${main_log}" 2>>"${err_log}" || error_exit
+bash acme.sh --issue --standalone --debug 2 --log -d ${MYDOMAIN} -d www.${MYDOMAIN} --keylength ec-384 >>"${main_log}" 2>>"${err_log}" || error_exit 
 
 ln -s /root/.acme.sh/${MYDOMAIN}_ecc/fullchain.cer /etc/nginx/ssl/${MYDOMAIN}-ecc.cer 
 ln -s /root/.acme.sh/${MYDOMAIN}_ecc/${MYDOMAIN}.key /etc/nginx/ssl/${MYDOMAIN}-ecc.key 
@@ -95,8 +95,8 @@ rm /etc/nginx/ssl/mail.${MYDOMAIN}.cer
 rm /etc/nginx/ssl/mail.${MYDOMAIN}.key
 
 cd /root/NeXt-Server-Bullseye/sources/acme.sh/
-bash acme.sh --set-default-ca --server letsencrypt
-bash acme.sh --issue --debug 2 --standalone -d mail.${MYDOMAIN} -d imap.${MYDOMAIN} -d smtp.${MYDOMAIN} --keylength 4096 
+bash acme.sh --set-default-ca --server letsencrypt >>"${main_log}" 2>>"${err_log}" || error_exit
+bash acme.sh --issue --debug 2 --standalone -d mail.${MYDOMAIN} -d imap.${MYDOMAIN} -d smtp.${MYDOMAIN} --keylength 4096 >>"${main_log}" 2>>"${err_log}" || error_exit 
 
 ln -s /root/.acme.sh/mail.${MYDOMAIN}/fullchain.cer /etc/nginx/ssl/mail.${MYDOMAIN}.cer
 ln -s /root/.acme.sh/mail.${MYDOMAIN}/mail.${MYDOMAIN}.key /etc/nginx/ssl/mail.${MYDOMAIN}.key

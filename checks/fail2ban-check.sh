@@ -35,4 +35,5 @@ if [[ "${failed_fail2ban_checks}" != "0" ]]; then
 fi
 
 check_service "fail2ban"
+echo ""
 }

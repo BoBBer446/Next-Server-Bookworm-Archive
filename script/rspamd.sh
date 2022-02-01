@@ -9,6 +9,7 @@ install_packages "rspamd"
 systemctl stop rspamd
 
 cp /root/NeXt-Server-Bullseye/configs/rspamd/classifier-bayes.conf /etc/rspamd/local.d/classifier-bayes.conf
+cp /root/NeXt-Server-Bullseye/configs/rspamd/classifier-bayes.conf2 /etc/rspamd/override.d/classifier-bayes.conf
 
 RSPAMADM_PASSWORT=$(password)
 
@@ -88,7 +89,7 @@ sed_replace_word "#include _rspamd.conf;" "include _rspamd.conf;" "/etc/nginx/si
 
 systemctl restart redis-server
 systemctl restart nginx
-systemctl start rspamd
-systemctl start dovecot
-systemctl start postfix
+systemctl restart rspamd
+systemctl restart dovecot
+systemctl restart postfix
 }

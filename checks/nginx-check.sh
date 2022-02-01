@@ -93,4 +93,5 @@ curl ${MYDOMAIN} -s -f -o /dev/null && echo "${ok} Website ${MYDOMAIN} is up and
 
 #check process
 check_service "nginx"
+echo ""
 }

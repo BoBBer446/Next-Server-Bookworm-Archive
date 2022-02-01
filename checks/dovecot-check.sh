@@ -49,4 +49,5 @@ if [[ "${failed_dovecot_checks}" != "0" ]]; then
 fi
 
 check_service "dovecot"
+echo ""
 }

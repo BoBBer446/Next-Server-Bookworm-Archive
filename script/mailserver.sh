@@ -7,8 +7,8 @@ trap error_exit ERR
 
 systemctl -q stop nginx.service
 cd /root/NeXt-Server-Bullseye/sources/acme.sh/
-bash acme.sh --set-default-ca --server letsencrypt
-bash acme.sh --issue --debug 2 --standalone -d mail.${MYDOMAIN} -d imap.${MYDOMAIN} -d smtp.${MYDOMAIN} --keylength 4096 
+bash acme.sh --set-default-ca --server letsencrypt >>"${main_log}" 2>>"${err_log}" || error_exit
+bash acme.sh --issue --debug 2 --standalone -d mail.${MYDOMAIN} -d imap.${MYDOMAIN} -d smtp.${MYDOMAIN} --keylength 4096 >>"${main_log}" 2>>"${err_log}" || error_exit 
 ln -s /root/.acme.sh/mail.${MYDOMAIN}/fullchain.cer /etc/nginx/ssl/mail.${MYDOMAIN}.cer
 ln -s /root/.acme.sh/mail.${MYDOMAIN}/mail.${MYDOMAIN}.key /etc/nginx/ssl/mail.${MYDOMAIN}.key
 systemctl -q start nginx.service
@@ -25,7 +25,7 @@ mysql -u root -p${MYSQL_ROOT_PASS} mysql < /root/NeXt-Server-Bullseye/configs/ma
 
 mysql -u root -p${MYSQL_ROOT_PASS} mysql < /root/NeXt-Server-Bullseye/configs/mailserver/tlspolicies.sql
 
-adduser --gecos "" --disabled-login --disabled-password --home /var/vmail vmail 
+adduser --gecos "" --disabled-login --disabled-password --home /var/vmail vmail >>"${main_log}" 2>>"${err_log}" || error_exit
 
 mkdir -p /var/vmail/mailboxes
 mkdir -p /var/vmail/sieve/global

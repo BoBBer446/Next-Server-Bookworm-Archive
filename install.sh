@@ -7,6 +7,7 @@ dev_mode=/root/NeXt-Server-Bullseye/dev.conf
 if [ -f "$dev_mode" ]; then
     sed_replace_word "ec-384" "ec-384 --staging" "/root/NeXt-Server-Bullseye/script/lets_encrypt.sh"
     sed_replace_word "4096" "4096 --staging" "/root/NeXt-Server-Bullseye/script/mailserver.sh"
+    sed_replace_word "4096" "2048" "/root/NeXt-Server-Bullseye/script/dovecot.sh"
     set -x
 fi
 

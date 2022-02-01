@@ -86,4 +86,5 @@ fi
 
 check_service "rspamd"
 check_service "redis-server"
+echo ""
 }

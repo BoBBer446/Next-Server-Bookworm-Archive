@@ -14,4 +14,5 @@ else
 fi
 
 check_service "php$PHPVERSION7-fpm"
+echo ""
 }

@@ -59,7 +59,7 @@ NGINX_MODULES="--without-http_browser_module \
 --with-openssl=/root/NeXt-Server-Bullseye/sources/openssl-${OPENSSL_VERSION} \
 --add-module=/root/NeXt-Server-Bullseye/sources/naxsi/naxsi_src"
 
-./configure $NGINX_OPTIONS $NGINX_MODULES --with-cc-opt='-O2 -g -pipe -Wall -Wformat -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong -m64 -mtune=generic' 
+./configure $NGINX_OPTIONS $NGINX_MODULES --with-cc-opt='-O2 -g -pipe -Wall -Wformat -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong -m64 -mtune=generic' >>"${make_log}" 2>>"${make_err_log}"
 make -j $(nproc) >>"${make_log}" 2>>"${make_err_log}"  
 make install >>"${make_log}" 2>>"${make_err_log}" 
 

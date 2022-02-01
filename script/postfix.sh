@@ -9,8 +9,6 @@ install_packages "postfix postfix-mysql"
 
 systemctl stop postfix
 
-rm /etc/postfix/./makedefs.out; ln /usr/share/postfix/makedefs.out /etc/postfix/./makedefs.out
-
 cd /etc/postfix
 rm -r sasl
 rm master.cf main.cf.proto master.cf.proto
@@ -24,7 +22,7 @@ sed_replace_word "IP6ADR" "${IP6ADR}" "/etc/postfix/main.cf"
 cp /root/NeXt-Server-Bullseye/configs/postfix/master.cf /etc/postfix/master.cf
 cp /root/NeXt-Server-Bullseye/configs/postfix/submission_header_cleanup /etc/postfix/submission_header_cleanup
 
-mkdir /etc/postfix/sql
+mkdir -p /etc/postfix/sql
 cp -R /root/NeXt-Server-Bullseye/configs/postfix/sql/* /etc/postfix/sql/
 sed_replace_word "placeholder" "${MAILSERVER_DB_PASS}" "/etc/postfix/sql/accounts.cf"
 sed_replace_word "placeholder" "${MAILSERVER_DB_PASS}" "/etc/postfix/sql/aliases.cf"
@@ -38,4 +36,8 @@ chmod g+x /etc/postfix/sql
 touch /etc/postfix/without_ptr
 postmap /etc/postfix/without_ptr
 newaliases
+
+systemctl reload postfix
+
+rm /etc/postfix/./makedefs.out; ln /usr/share/postfix/makedefs.out /etc/postfix/./makedefs.out
 }

@@ -35,4 +35,5 @@ if [[ "${failed_unbound_checks}" != "0" ]]; then
 fi
 
 check_service "unbound"
+echo ""
 }

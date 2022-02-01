@@ -84,4 +84,5 @@ if [[ "${failed_postfix_checks}" != "0" ]]; then
 fi
 
 check_service "postfix"
+echo ""
 }

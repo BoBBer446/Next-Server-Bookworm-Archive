@@ -49,4 +49,5 @@ if [[ "${failed_openssh_checks}" != "0" ]]; then
 fi
 
 check_service "sshd"
+echo ""
 }

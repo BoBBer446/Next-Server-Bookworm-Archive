@@ -7,7 +7,7 @@ trap error_exit ERR
 
 install_packages "python3 libprotobuf23 python3-protobuf python3-pymysql"
 
-wget http://ftp.de.debian.org/debian/pool/main/m/mysql-connector-python/python3-mysql.connector_${MYSQL_CONNECTOR}_all.deb
+wget http://ftp.de.debian.org/debian/pool/main/m/mysql-connector-python/python3-mysql.connector_${MYSQL_CONNECTOR}_all.deb >>"${main_log}" 2>>"${err_log}" || error_exit
 if [[ $? -ne 0 ]]; then
     CON_DL_FAILED="1"
 else
@@ -15,14 +15,14 @@ else
 fi
 
 if [[ ${CON_DL_FAILED} = "1" ]]; then
-	dpkg -i /root/NeXt-Server-Bullseye/includes/python3-mysql.connector_${MYSQL_CONNECTOR_LOCAL}_all.deb
+	dpkg -i /root/NeXt-Server-Bullseye/includes/python3-mysql.connector_${MYSQL_CONNECTOR_LOCAL}_all.deb >>"${main_log}" 2>>"${err_log}" || error_exit
 else
-	dpkg -i python3-mysql.connector_${MYSQL_CONNECTOR}_all.deb
+	dpkg -i python3-mysql.connector_${MYSQL_CONNECTOR}_all.deb >>"${main_log}" 2>>"${err_log}" || error_exit
 fi
 
 mkdir -p /etc/managevmail/
-wget https://codeload.github.com/mhthies/managevmail/zip/master 
-unzip master -d /etc/managevmail/ 
+wget https://codeload.github.com/mhthies/managevmail/zip/master >>"${main_log}" 2>>"${err_log}" || error_exit 
+unzip master -d /etc/managevmail/ >>"${main_log}" 2>>"${err_log}" || error_exit 
 mv /etc/managevmail/managevmail-master/* /etc/managevmail/
 rm -R /etc/managevmail/managevmail-master
 

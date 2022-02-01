@@ -82,4 +82,5 @@ echo "${ok} ${passed_system_checks} checks passed!"
 if [[ "${failed_system_checks}" != "0" ]]; then
   echo "${error} ${failed_system_checks} check/s failed! Please check /root/NeXt-Server-Bullseye/logs/failed_checks.log or consider a new installation!"
 fi
+echo ""
 }

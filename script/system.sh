@@ -75,7 +75,7 @@ END
 apt update -y >/dev/null 2>&1
 apt -y upgrade >/dev/null 2>&1
 
-install_packages "dirmngr curl software-properties-common sudo rkhunter debsecan debsums passwdqc unattended-upgrades needrestart apt-listchanges apache2-utils"
+install_packages "haveged dirmngr curl software-properties-common sudo rkhunter debsecan debsums passwdqc unattended-upgrades needrestart apt-listchanges apache2-utils"
 cp -f /root/NeXt-Server-Bullseye/configs/needrestart.conf /etc/needrestart/needrestart.conf
 cp -f /root/NeXt-Server-Bullseye/configs/20auto-upgrades /etc/apt/apt.conf.d/20auto-upgrades
 cp -f /root/NeXt-Server-Bullseye/configs/50unattended-upgrades /etc/apt/apt.conf.d/50unattended-upgrades
@@ -150,7 +150,7 @@ net.ipv4.tcp_timestamps = 0
 kernel.yama.ptrace_scope = 1
 END
 
-sysctl -p
+sysctl -p >>"${main_log}" 2>>"${err_log}" || error_exit
 
 cp -f /root/NeXt-Server-Bullseye/cronjobs/webserver_backup /etc/cron.daily/
 chmod +x /etc/cron.daily/webserver_backup

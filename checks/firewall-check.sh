@@ -29,4 +29,5 @@ if [[ "${failed_firewall_checks}" != "0" ]]; then
 fi
 
 check_service "arno-iptables-firewall"
+echo ""
 }

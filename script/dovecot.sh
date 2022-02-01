@@ -6,17 +6,16 @@ install_dovecot() {
 trap error_exit ERR
 
 ###dirty
-dpkg -i /root/NeXt-Server-Bullseye/includes/ssl-cert_1.1.2_all.deb
+dpkg -i /root/NeXt-Server-Bullseye/includes/ssl-cert_1.1.2_all.deb >>"${main_log}" 2>>"${err_log}" || error_exit
 
 install_packages "dovecot-core dovecot-imapd dovecot-lmtpd dovecot-mysql dovecot-sieve dovecot-managesieved"
 
 systemctl stop dovecot
 mkdir -p /etc/dovecot
+rm -r /etc/dovecot/*
 cd /etc/dovecot
 
-
-####### change 4096
-openssl dhparam -out /etc/dovecot/dh.pem 2048 >/dev/null 2>&1
+openssl dhparam -out /etc/dovecot/dh.pem 4096 >/dev/null 2>&1
 cp /root/NeXt-Server-Bullseye/configs/dovecot/dovecot.conf /etc/dovecot/dovecot.conf
 sed_replace_word "domain.tld" "${MYDOMAIN}" "/etc/dovecot/dovecot.conf"
 
