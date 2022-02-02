@@ -89,7 +89,7 @@ sed_replace_word "#include _rspamd.conf;" "include _rspamd.conf;" "/etc/nginx/si
 
 systemctl restart redis-server
 systemctl restart nginx
-systemctl restart rspamd
-systemctl restart dovecot
-systemctl restart postfix
+systemctl start rspamd
+systemctl start dovecot
+systemctl start postfix
 }
