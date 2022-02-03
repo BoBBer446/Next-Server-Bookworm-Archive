@@ -37,7 +37,5 @@ touch /etc/postfix/without_ptr
 postmap /etc/postfix/without_ptr
 newaliases
 
-systemctl reload postfix
-
 rm /etc/postfix/./makedefs.out; ln /usr/share/postfix/makedefs.out /etc/postfix/./makedefs.out
 }
