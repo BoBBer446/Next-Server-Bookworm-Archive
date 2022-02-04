@@ -74,6 +74,7 @@ mkdir -p /var/cache/nginx
 mkdir -p /var/log/nginx/
 
 cp /root/NeXt-Server-Bullseye/configs/nginx/confs/nginx.service /lib/systemd/system/
+systemctl enable nginx.service
 
 rm -rf /etc/nginx/nginx.conf
 cp /root/NeXt-Server-Bullseye/configs/nginx/confs/* /etc/nginx/
