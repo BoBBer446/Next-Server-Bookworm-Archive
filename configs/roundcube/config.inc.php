@@ -12,7 +12,7 @@ $config['db_dsnw'] = 'mysql://rcdbuser:rcdbpassword@localhost/rcdbname';
 
 // IMAP host chosen to perform the log-in.
 // See defaults.inc.php for the option description.
-$config['imap_host'] = 'tls://%n:143';
+$config['imap_host'] = 'tls://%n';
 $config['imap_conn_options'] = [
   'ssl'         => [
     'peer_name' => 'mail.MYDOMAIN',
@@ -22,14 +22,13 @@ $config['imap_conn_options'] = [
 
 // SMTP server host (for sending mails).
 // See defaults.inc.php for the option description.
-$config['smtp_server'] = 'tls://%n';
+$config['smtp_host'] = 'tls://%n';
 $config['smtp_conn_options'] = [
   'ssl' => [
     'peer_name' => 'mail.MYDOMAIN',
     'cafile' => '/etc/ssl/certs/ca-certificates.crt'
   ],
 ];
-$config['smtp_host'] = 'tls://%n:587';
 
 // SMTP username (if required) if you use %u as the username Roundcube
 // will use the current username for login
