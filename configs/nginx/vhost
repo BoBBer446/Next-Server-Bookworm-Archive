@@ -16,13 +16,8 @@ server {
     access_log          /var/log/nginx/MYDOMAIN.access.log;
     error_log           /var/log/nginx/MYDOMAIN.error.log warn;
 
-    # index.html fallback
-    location / {
-        try_files $uri $uri/ /index.html;
-    }
-
     # index.php fallback
-    location ~ ^/api/ {
+    location / {
         try_files $uri $uri/ /index.php?$query_string;
     }
 
@@ -34,7 +29,7 @@ server {
     #include _munin.conf;
 
     # handle .php
-    location ~ \.php$ {
+    location ~ [^/]\.php(/|$) {
         fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
         include      _php_fastcgi.conf;
     }
