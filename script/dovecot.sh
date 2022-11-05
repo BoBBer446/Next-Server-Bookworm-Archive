@@ -5,6 +5,9 @@ install_dovecot() {
 
 trap error_exit ERR
 
+###dirty
+dpkg -i /root/NeXt-Server-Bullseye/includes/ssl-cert_1.1.2_all.deb >>"${main_log}" 2>>"${err_log}" || error_exit
+
 install_packages "dovecot-core dovecot-imapd dovecot-lmtpd dovecot-mysql dovecot-sieve dovecot-managesieved"
 
 systemctl stop dovecot
