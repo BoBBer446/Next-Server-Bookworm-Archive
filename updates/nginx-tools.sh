@@ -65,9 +65,6 @@ update_nginx() {
   wget https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz >>"$main_log" 2>>"$err_log"
   tar -xzf openssl-${OPENSSL_VERSION}.tar.gz >>"$main_log" 2>>"$err_log"
 
-  cd /root/NeXt-Server-Bullseye/updates/sources/
-  git clone https://github.com/nbs-system/naxsi.git -q
-
   systemctl -q stop nginx.service
   cd /root/NeXt-Server-Bullseye/updates/sources/
   wget_tar "https://nginx.org/download/nginx-${LATEST_NGINX_VERSION}.tar.gz"
@@ -118,8 +115,7 @@ update_nginx() {
   --with-http_mp4_module \
   --with-http_gunzip_module \
   --with-openssl-opt=enable-tls1_3 \
-  --with-openssl=/root/NeXt-Server-Bullseye/updates/sources/openssl-${OPENSSL_VERSION} \
-  --add-module=/root/NeXt-Server-Bullseye/updates/sources/naxsi/naxsi_src"
+  --with-openssl=/root/NeXt-Server-Bullseye/updates/sources/openssl-${OPENSSL_VERSION}"
 
   ./configure $NGINX_OPTIONS $NGINX_MODULES --with-cc-opt='-O2 -g -pipe -Wall -Wformat -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong -m64 -mtune=generic'
   make -j $(nproc) >>"${make_log}" 2>>"${make_err_log}"

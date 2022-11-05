@@ -37,9 +37,6 @@ install_fail2ban
 progress_gauge "33" "Installing MariaDB..."
 install_mariadb
 
-progress_gauge "34" "Installing Nginx Addons..."
-install_nginx_addons
-
 progress_gauge "40" "Installing Nginx..."
 install_nginx
 

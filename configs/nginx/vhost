@@ -16,11 +16,13 @@ server {
     access_log          /var/log/nginx/MYDOMAIN.access.log;
     error_log           /var/log/nginx/MYDOMAIN.error.log warn;
 
-    # index.php
-    index               index.php index.html;
+    # index.html fallback
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
 
     # index.php fallback
-    location / {
+    location ~ ^/api/ {
         try_files $uri $uri/ /index.php?$query_string;
     }
 
