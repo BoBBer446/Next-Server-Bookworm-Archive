@@ -2,9 +2,9 @@
 #Please check the license provided with the script!
 
 set_logs() {
-main_log="/root/NeXt-Server-Bullseye/logs/main.log"
-err_log="/root/NeXt-Server-Bullseye/logs/error.log"
-failed_checks_log="/root/NeXt-Server-Bullseye/logs/failed_checks.log"
-make_log="/root/NeXt-Server-Bullseye/logs/make.log"
-make_err_log="/root/NeXt-Server-Bullseye/logs/make_error.log"
+main_log="/root/NeXt-Server-Bookworm/logs/main.log"
+err_log="/root/NeXt-Server-Bookworm/logs/error.log"
+failed_checks_log="/root/NeXt-Server-Bookworm/logs/failed_checks.log"
+make_log="/root/NeXt-Server-Bookworm/logs/make.log"
+make_err_log="/root/NeXt-Server-Bookworm/logs/make_error.log"
 }

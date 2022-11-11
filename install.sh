@@ -1,14 +1,14 @@
 #!/bin/bash
 #Please check the license provided with the script!
 
-source /root/NeXt-Server-Bullseye/configs/sources.cfg
+source /root/NeXt-Server-Bookworm/configs/sources.cfg
 
-dev_mode=/root/NeXt-Server-Bullseye/dev.conf
+dev_mode=/root/NeXt-Server-Bookworm/dev.conf
 if [ -f "$dev_mode" ]; then
-    sed_replace_word "ec-384" "ec-384 --staging" "/root/NeXt-Server-Bullseye/script/lets_encrypt.sh"
-    sed_replace_word "4096" "4096 --staging" "/root/NeXt-Server-Bullseye/script/mailserver.sh"
-    sed_replace_word "4096" "2048" "/root/NeXt-Server-Bullseye/script/dovecot.sh"
-    sed_replace_word "1.1.1.1" "46.38.225.230" "/root/NeXt-Server-Bullseye/script/functions.sh"
+    sed_replace_word "ec-384" "ec-384 --staging" "/root/NeXt-Server-Bookworm/script/lets_encrypt.sh"
+    sed_replace_word "4096" "4096 --staging" "/root/NeXt-Server-Bookworm/script/mailserver.sh"
+    sed_replace_word "4096" "2048" "/root/NeXt-Server-Bookworm/script/dovecot.sh"
+    sed_replace_word "1.1.1.1" "46.38.225.230" "/root/NeXt-Server-Bookworm/script/functions.sh"
     set -x
 fi
 
@@ -22,7 +22,7 @@ check_system_before_start
 
 confighelper_userconfig
 
-mkdir /root/NeXt-Server-Bullseye/sources
+mkdir /root/NeXt-Server-Bookworm/sources
 progress_gauge "0" "Installing System..."
 install_system
 
@@ -48,7 +48,7 @@ progress_gauge "68" "Creating Let's Encrypt Certificate..."
 create_nginx_cert
 
 progress_gauge "74" "Installing PHP..."
-install_php_7_4
+install_php_8_1
 
 progress_gauge "75" "Installing Mailserver..."
 if [[ ${USE_MAILSERVER} = "1" ]]; then
@@ -68,13 +68,13 @@ install_end=`date +%s`
 runtime=$((install_end-install_start))
 
 if [[ ${USE_MAILSERVER} = "1" ]]; then
-    sed -i 's/NXT_IS_INSTALLED_MAILSERVER="0"/NXT_IS_INSTALLED_MAILSERVER="1"/' /root/NeXt-Server-Bullseye/configs/userconfig.cfg
+    sed -i 's/NXT_IS_INSTALLED_MAILSERVER="0"/NXT_IS_INSTALLED_MAILSERVER="1"/' /root/NeXt-Server-Bookworm/configs/userconfig.cfg
 else
-    sed -i 's/NXT_IS_INSTALLED="0"/NXT_IS_INSTALLED="1"/' /root/NeXt-Server-Bullseye/configs/userconfig.cfg
+    sed -i 's/NXT_IS_INSTALLED="0"/NXT_IS_INSTALLED="1"/' /root/NeXt-Server-Bookworm/configs/userconfig.cfg
 fi
 
 date=$(date +"%d-%m-%Y")
-sed -i 's/NXT_INSTALL_DATE="0"/NXT_INSTALL_DATE="'${date}'"/' /root/NeXt-Server-Bullseye/configs/userconfig.cfg
-sed -i 's/NXT_INSTALL_TIME_SECONDS="0"/NXT_INSTALL_TIME_SECONDS="'${runtime}'"/' /root/NeXt-Server-Bullseye/configs/userconfig.cfg
+sed -i 's/NXT_INSTALL_DATE="0"/NXT_INSTALL_DATE="'${date}'"/' /root/NeXt-Server-Bookworm/configs/userconfig.cfg
+sed -i 's/NXT_INSTALL_TIME_SECONDS="0"/NXT_INSTALL_TIME_SECONDS="'${runtime}'"/' /root/NeXt-Server-Bookworm/configs/userconfig.cfg
 
 start_after_install

@@ -38,7 +38,7 @@ echo "Mailserver:"
 echo "${ok} ${passed_mailserver_checks} checks passed!"
 
 if [[ "${failed_mailserver_checks}" != "0" ]]; then
-  echo "${error} ${failed_mailserver_checks} check/s failed! Please check /root/NeXt-Server-Bullseye/logs/failed_checks.log or consider a new installation!"
+  echo "${error} ${failed_mailserver_checks} check/s failed! Please check /root/NeXt-Server-Bookworm/logs/failed_checks.log or consider a new installation!"
 fi
 echo ""
 }

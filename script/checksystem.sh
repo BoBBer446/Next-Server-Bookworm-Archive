@@ -8,7 +8,8 @@ trap error_exit ERR
 local Su_user=$(whoami)
 [ "$Su_user" != 'root' ] && error_exit "Please run the script as root user"
 
-[ $(lsb_release -is) != 'Debian' ] && [ $(lsb_release -cs) != 'Bullseye' ] && error_exit "Please run the Script with Debian Bullseye"
+### change before release to bookworm
+[ $(lsb_release -is) != 'Debian' ] && [ $(lsb_release -cs) != 'testing' ] && error_exit "Please run the Script with Debian testing"
 
 local LOCAL_KERNEL_VERSION=$(uname -a | awk '/Linux/ {print $(NF-7)}')
 [ $LOCAL_KERNEL_VERSION != ${KERNEL_VERSION} ] && kernel_check_failed

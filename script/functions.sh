@@ -153,13 +153,13 @@ error_exit() {
   USED_OS=$(lsb_release -ic)
   echo "Your used OS is: $USED_OS"
   echo ""
-  echo "If you don't know how to resolve this Issue, please visit https://github.com/shoujii/NeXt-Server-Bullseye/issues/new to add the Issue on Github!"
+  echo "If you don't know how to resolve this Issue, please visit https://github.com/shoujii/NeXt-Server-Bookworm/issues/new to add the Issue on Github!"
   exit
 }
 
 show_login_information() {
   dialog_msg "Please save the shown login information on next page"
-  cat /root/NeXt-Server-Bullseye/login_information.txt
+  cat /root/NeXt-Server-Bookworm/login_information.txt
 }
 
 continue_to_menu() {
@@ -168,7 +168,7 @@ continue_to_menu() {
   echo "Exit"
   exit
   fi
-  bash /root/NeXt-Server-Bullseye/nxt.sh
+  bash /root/NeXt-Server-Bookworm/nxt.sh
 }
 
 continue_or_exit() {

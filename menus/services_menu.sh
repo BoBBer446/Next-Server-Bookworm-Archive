@@ -3,7 +3,7 @@
 
 menu_options_services() {
 
-source /root/NeXt-Server-Bullseye/configs/sources.cfg
+source /root/NeXt-Server-Bookworm/configs/sources.cfg
 set_logs
 
 HEIGHT=40
@@ -45,7 +45,7 @@ menu_options_firewall
 ;;
 
 4)
-bash /root/NeXt-Server-Bullseye/nxt.sh
+bash /root/NeXt-Server-Bookworm/nxt.sh
 ;;
 
 5)

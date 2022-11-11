@@ -10,8 +10,8 @@ HEIGHT=40
 WIDTH=80
 
 # --- MYDOMAIN ---
-source /root/NeXt-Server-Bullseye/configs/sources.cfg
-cp /root/NeXt-Server-Bullseye/configs/dns_settings.txt /root/NeXt-Server-Bullseye/dns_settings.txt
+source /root/NeXt-Server-Bookworm/configs/sources.cfg
+cp /root/NeXt-Server-Bookworm/configs/dns_settings.txt /root/NeXt-Server-Bookworm/dns_settings.txt
 get_domain
 CHECK_DOMAIN_LENGTH=`echo -n ${DETECTED_DOMAIN} | wc -m`
 
@@ -65,9 +65,9 @@ fi
 
 # --- DNS Check ---
 server_ip=$(ip route get 1.1.1.1 | awk '/1.1.1.1/ {print $(NF-2)}')
-sed_replace_word "server_ip" "$server_ip" "/root/NeXt-Server-Bullseye/dns_settings.txt"
-sed_replace_word "yourdomain.com" "$MYDOMAIN" "/root/NeXt-Server-Bullseye/dns_settings.txt"
-dialog --title "DNS Settings" --tab-correct --exit-label "ok" --textbox /root/NeXt-Server-Bullseye/dns_settings.txt 50 200
+sed_replace_word "server_ip" "$server_ip" "/root/NeXt-Server-Bookworm/dns_settings.txt"
+sed_replace_word "yourdomain.com" "$MYDOMAIN" "/root/NeXt-Server-Bookworm/dns_settings.txt"
+dialog --title "DNS Settings" --tab-correct --exit-label "ok" --textbox /root/NeXt-Server-Bookworm/dns_settings.txt 50 200
 
 BACKTITLE="NeXt Server Installation"
 TITLE="NeXt Server Installation"
@@ -170,14 +170,14 @@ You can change your choice at the end of the confighelper, if you select no rest
 ;;
 esac
 
-PHPVERSION7="7.4"
+PHPVERSION8="8.1"
 NXT_SYSTEM_EMAIL="admin@${MYDOMAIN}"
 IPV6NETINPUT="fe80::1"
 CONFIG_COMPLETED="1"
 
 GIT_LOCAL_FILES_HEAD=$(git rev-parse --short HEAD)
-rm -rf /root/NeXt-Server-Bullseye/configs/userconfig.cfg
-cat >> /root/NeXt-Server-Bullseye/configs/userconfig.cfg <<END
+rm -rf /root/NeXt-Server-Bookworm/configs/userconfig.cfg
+cat >> /root/NeXt-Server-Bookworm/configs/userconfig.cfg <<END
 #-----------------------------------------------------------#
 ############### Config File from Confighelper ###############
 #-----------------------------------------------------------#
@@ -186,7 +186,7 @@ cat >> /root/NeXt-Server-Bullseye/configs/userconfig.cfg <<END
 CONFIG_COMPLETED="${CONFIG_COMPLETED}"
 MYDOMAIN="${MYDOMAIN}"
 USE_MAILSERVER="${USE_MAILSERVER}"
-PHPVERSION7="${PHPVERSION7}"
+PHPVERSION8="${PHPVERSION8}"
 IP6ADR="${IPV6ADRINPUT}"
 IPV6GAT="${IPV6GATINPUT}"
 IPV6NET="${IPV6NETINPUT}"
@@ -220,7 +220,7 @@ TIMEZONE="EMPTY_TIMEZONE"
 #-----------------------------------------------------------#
 END
 
-dialog --title "Userconfig" --exit-label "ok" --textbox /root/NeXt-Server-Bullseye/configs/userconfig.cfg 50 250
+dialog --title "Userconfig" --exit-label "ok" --textbox /root/NeXt-Server-Bookworm/configs/userconfig.cfg 50 250
 clear
 
 CHOICE_HEIGHT=2

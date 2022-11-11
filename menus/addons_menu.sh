@@ -3,7 +3,7 @@
 
 menu_options_addons() {
 
-source /root/NeXt-Server-Bullseye/configs/sources.cfg
+source /root/NeXt-Server-Bookworm/configs/sources.cfg
 set_logs
 
 HEIGHT=40
@@ -43,7 +43,7 @@ if [[ ${NXT_IS_INSTALLED} == '1' ]] || [[ ${NXT_IS_INSTALLED_MAILSERVER} == '1' 
     else
         menu_options_nextcloud
         install_nextcloud
-        dialog --title "Your Nextcloud logininformations" --tab-correct --exit-label "ok" --textbox /root/NeXt-Server-Bullseye/nextcloud_login_data.txt 50 200
+        dialog --title "Your Nextcloud logininformations" --tab-correct --exit-label "ok" --textbox /root/NeXt-Server-Bookworm/nextcloud_login_data.txt 50 200
     fi
 else
     echo "You have to install the NeXt Server with the Webserver component to run this Addon!"
@@ -145,7 +145,7 @@ menu_options_addons
 ;;
 
 8)
-bash /root/NeXt-Server-Bullseye/nxt.sh
+bash /root/NeXt-Server-Bookworm/nxt.sh
 ;;
 
 9)

@@ -9,7 +9,7 @@ if [ $(dpkg-query -l | grep dialog | wc -l) -ne 3 ]; then
     apt -qq install dialog >/dev/null 2>&1
 fi
 
-source /root/NeXt-Server-Bullseye/configs/sources.cfg
+source /root/NeXt-Server-Bookworm/configs/sources.cfg
 
 GIT_LOCAL_FILES_HEAD=$(git rev-parse --short HEAD)
 GIT_LOCAL_FILES_HEAD_LAST_COMMIT=$(git log -1 --date=short --pretty=format:%cd)
