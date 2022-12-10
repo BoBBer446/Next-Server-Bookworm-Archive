@@ -5,7 +5,7 @@ install_fail2ban() {
 
 trap error_exit ERR
 
-install_packages "python"
+install_packages "python3"
 
 mkdir -p /root/NeXt-Server-Bookworm/sources/${FAIL2BAN_VERSION}/ >>"${main_log}" 2>>"${err_log}"
 cd /root/NeXt-Server-Bookworm/sources/${FAIL2BAN_VERSION}/ >>"${main_log}" 2>>"${err_log}"

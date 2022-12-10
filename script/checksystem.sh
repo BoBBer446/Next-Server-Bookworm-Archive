@@ -11,7 +11,7 @@ local Su_user=$(whoami)
 ### change before release to bookworm
 [ $(lsb_release -is) != 'Debian' ] && [ $(lsb_release -cs) != 'testing' ] && error_exit "Please run the Script with Debian testing"
 
-local LOCAL_KERNEL_VERSION=$(uname -a | awk '/Linux/ {print $(NF-7)}')
+local LOCAL_KERNEL_VERSION=$(uname -a | awk '/Linux/ {print $(NF-8)}')
 [ $LOCAL_KERNEL_VERSION != ${KERNEL_VERSION} ] && kernel_check_failed
 
 [ $(grep MemTotal /proc/meminfo | awk '{print $2}') -lt 2000000 ] && error_exit "This script needs at least ~2GB Ram"
