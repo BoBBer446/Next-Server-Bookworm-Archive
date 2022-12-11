@@ -32,9 +32,8 @@ install_openssl
 progress_gauge "31" "Installing OpenSSH..."
 install_openssh
 
-###fixing python3 conflict later
-#progress_gauge "32" "Installing fail2ban..."
-#install_fail2ban
+progress_gauge "32" "Installing fail2ban..."
+install_fail2ban
 
 progress_gauge "33" "Installing MariaDB..."
 install_mariadb

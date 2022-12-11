@@ -100,7 +100,6 @@ NeXt-Server-Bookworm/
     │   ├── fail2ban/
     │   ├── mailserver/
     │   ├── nginx/
-    │   ├── php/
     │   ├── pma/
     │   ├── postfix/
     │   ├── roundcube/
