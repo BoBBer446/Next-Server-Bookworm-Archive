@@ -18,14 +18,12 @@
 # See man 5 jail.conf for details.
 #
 [DEFAULT]
-bantime = 24h
+
 #
 [sshd]
 enabled = true
 #
 # See jail.conf(5) man page for more information
-
-
 
 # Comments: use '#' for comment lines and ';' (following a space) for inline comments
 

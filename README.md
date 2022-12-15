@@ -88,8 +88,7 @@ NeXt-Server-Bookworm/
     ├── addons/
     │
     │   ├── vhosts/
-        │   ├── [Various Vhost .conf files]
-        │
+    │      ├── [Various Vhost .conf files]
     │   ├── [Various Addon .sh files]
     │
     ├── checks/
@@ -101,29 +100,29 @@ NeXt-Server-Bookworm/
     │   ├── fail2ban/
     │   ├── mailserver/
     │   ├── nginx/
-    │   ├── php/
     │   ├── pma/
     │   ├── postfix/
+    │   ├── roundcube/
     │   ├── rspamd/  
+    │   ├── [Various interfaces, blocked ports and upgrade files] 
+    │   ├── sources.cfg
     │   ├── sshd_config  
     │   ├── userconfig.cfg
     │   ├── versions.cfg
     │
     ├── cronjobs/
-    │   ├── backupscript
+    │   ├── free_disk_space    
+    │   ├── le_cert_alert    
+    │   ├── webserver_backup
     │
     ├── includes/
+    │   ├── issue   
+    │   ├── issue.net     
     │   ├── NeXt-logo.jpg
-    │   ├── dns_settings.txt
-    │   ├── issue
-    │   ├── issue.net
+    │   ├── python3-mysql.connector
     │
     ├── logs/
-    │   ├── error.log
-    │   ├── failed_checks.log
-    │   ├── main.log
-    │   ├── make.log
-    │   ├── make_error.log   
+    │   ├── [Various .log files]
     │
     ├── menus/
     │   ├── [Various menu .sh files]
@@ -134,13 +133,12 @@ NeXt-Server-Bookworm/
     ├── updates/
     │   ├── [Various service update .sh files]
     │
+    ├── confighelper.sh   
+    ├── install.sh     
     ├── LICENSE
+    ├── login_information.txt    
+    ├── nxt.sh    
     ├── README.md
-    ├── confighelper.sh
-    ├── dns_settings.txt
-    ├── install.sh
-    ├── login_information.txt
-    ├── nxt.sh
     ├── update_script.sh
 ```
 

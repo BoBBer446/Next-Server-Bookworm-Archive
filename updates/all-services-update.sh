@@ -20,8 +20,9 @@ if [[ ${NXT_IS_INSTALLED} == '1' ]] || [[ ${NXT_IS_INSTALLED_MAILSERVER} == '1' 
   echo "8" | dialog --gauge "Upgrading Debian..." 10 70 0
   apt -y dist-upgrade >/dev/null 2>&1
 
-  echo "12" | dialog --gauge "Updating fail2ban..." 10 70 0
-  update_fail2ban
+  #deactivated temporary -> waiting for fail2ban working without disutils
+  #echo "12" | dialog --gauge "Updating fail2ban..." 10 70 0
+  #update_fail2ban
 
   echo "15" | dialog --gauge "Updating firewall..." 10 70 0
   #source /root/NeXt-Server-Bookworm/updates/firewall-update.sh; update_firewall
