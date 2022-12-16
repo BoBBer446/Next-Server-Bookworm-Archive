@@ -69,9 +69,6 @@ find . -type d -exec chmod 755 {} \;
 cp /root/NeXt-Server-Bookworm/addons/vhosts/_wordpress.conf /etc/nginx/_wordpress.conf
 sed_replace_word "#include _wordpress.conf;" "include _wordpress.conf;" "/etc/nginx/sites-available/${MYDOMAIN}.conf"
 
-systemctl -q restart php$PHPVERSION8-fpm.service
-systemctl restart nginx
-
 touch /root/NeXt-Server-Bookworm/wordpress_login_data.txt
 echo "--------------------------------------------" >> /root/NeXt-Server-Bookworm/wordpress_login_data.txt
 echo "Wordpress" >> /root/NeXt-Server-Bookworm/wordpress_login_data.txt
@@ -88,6 +85,9 @@ echo "WordpressScriptPath = ${WORDPRESS_PATH_NAME}" >> /root/NeXt-Server-Bookwor
 
 sed_replace_word "WORDPRESS_IS_INSTALLED=\"0"\" "WORDPRESS_IS_INSTALLED=\"1"\" "/root/NeXt-Server-Bookworm/configs/userconfig.cfg"
 echo "$WORDPRESS_PATH_NAME" >> /root/NeXt-Server-Bookworm/configs/blocked_paths.conf
+
+systemctl -q restart php$PHPVERSION8-fpm.service
+systemctl restart nginx
 
 dialog_msg "Please save the shown login information on next page"
 cat /root/NeXt-Server-Bookworm/wordpress_login_data.txt

@@ -7,7 +7,7 @@ trap error_exit ERR
 
 source /root/NeXt-Server-Bookworm/configs/sources.cfg
 
-install_packages "unzip php-gmp libmagickcore-6.q16-6-extra"
+install_packages "unzip php-gmp imagemagick"
 
 MYSQL_ROOT_PASS=$(grep -Pom 1 "(?<=^MYSQL_ROOT_PASS: ).*$" /root/NeXt-Server-Bookworm/login_information.txt)
 NEXTCLOUD_USER=$(username)
@@ -37,9 +37,6 @@ cp /root/NeXt-Server-Bookworm/addons/vhosts/_nextcloud.conf /etc/nginx/_nextclou
 sed_replace_word "#include _nextcloud.conf;" "include _nextcloud.conf;" "/etc/nginx/sites-available/${MYDOMAIN}.conf"
 sed_replace_word "change_path" "${NEXTCLOUD_PATH_NAME}" "/etc/nginx/_nextcloud.conf"
 
-systemctl -q restart php$PHPVERSION8-fpm.service
-systemctl -q reload nginx.service
-
 touch /root/NeXt-Server-Bookworm/nextcloud_login_data.txt
 echo "--------------------------------------------" >> /root/NeXt-Server-Bookworm/nextcloud_login_data.txt
 echo "Nextcloud" >> /root/NeXt-Server-Bookworm/nextcloud_login_data.txt
@@ -51,6 +48,9 @@ echo "NextcloudDBName = ${NEXTCLOUD_DB_NAME}" >> /root/NeXt-Server-Bookworm/next
 
 sed_replace_word "NEXTCLOUD_IS_INSTALLED=\"0"\" "NEXTCLOUD_IS_INSTALLED=\"1"\" "/root/NeXt-Server-Bookworm/configs/userconfig.cfg"
 echo "$NEXTCLOUD_PATH_NAME" >> /root/NeXt-Server-Bookworm/configs/blocked_paths.conf
+
+systemctl -q restart php$PHPVERSION8-fpm.service
+systemctl -q reload nginx.service
 
 dialog_msg "Please save the shown login information on next page"
 cat /root/NeXt-Server-Bookworm/nextcloud_login_data.txt
