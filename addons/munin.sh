@@ -18,10 +18,6 @@ sed_replace_word "#include _munin.conf;" "include _munin.conf;" "/etc/nginx/site
 sed_replace_word "localhost.localdomain" "mail.${MYDOMAIN}" "/etc/munin/munin.conf"
 sed_replace_word "change_path" "${MUNIN_PATH_NAME}" "/etc/nginx/_munin.conf"
 
-systemctl -q restart php$PHPVERSION8-fpm.service
-systemctl -q restart munin-node 
-systemctl -q restart nginx.service
-
 touch /root/NeXt-Server-Bookworm/munin_login_data.txt
 echo "--------------------------------------------" >> /root/NeXt-Server-Bookworm/munin_login_data.txt
 echo "Munin" >> /root/NeXt-Server-Bookworm/munin_login_data.txt
@@ -33,6 +29,10 @@ echo "MUNIN_HTTPAUTH_PASS = ${MUNIN_HTTPAUTH_PASS}" >> /root/NeXt-Server-Bookwor
 
 sed_replace_word "MUNIN_IS_INSTALLED=\"0"\" "MUNIN_IS_INSTALLED=\"1"\" "/root/NeXt-Server-Bookworm/configs/userconfig.cfg"
 echo "$MUNIN_PATH_NAME" >> /root/NeXt-Server-Bookworm/configs/blocked_paths.conf
+
+systemctl -q restart php$PHPVERSION8-fpm.service
+systemctl -q restart munin-node 
+systemctl -q restart nginx.service
 
 dialog_msg "Please save the shown login information on next page"
 cat /root/NeXt-Server-Bookworm/munin_login_data.txt

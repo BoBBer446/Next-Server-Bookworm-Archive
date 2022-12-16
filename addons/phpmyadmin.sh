@@ -47,9 +47,6 @@ sed_replace_word "MYDOMAIN" "${MYDOMAIN}" "/etc/nginx/_phpmyadmin.conf"
 
 chown -R www-data:www-data /var/www/${MYDOMAIN}/public/${PHPMYADMIN_PATH_NAME}/
 
-systemctl -q restart php$PHPVERSION8-fpm.service
-systemctl -q reload nginx.service
-
 touch /root/NeXt-Server-Bookworm/phpmyadmin_login_data.txt
 echo "--------------------------------------------" >> /root/NeXt-Server-Bookworm/phpmyadmin_login_data.txt
 echo "phpmyadmin" >> /root/NeXt-Server-Bookworm/phpmyadmin_login_data.txt
@@ -71,6 +68,9 @@ echo "blowfish_secret = ${PMA_BFSECURE_PASS}" >> /root/NeXt-Server-Bookworm/phpm
 
 sed_replace_word "PMA_IS_INSTALLED=\"0"\" "PMA_IS_INSTALLED=\"1"\" "/root/NeXt-Server-Bookworm/configs/userconfig.cfg"
 echo "${PHPMYADMIN_PATH_NAME}" >> /root/NeXt-Server-Bookworm/configs/blocked_paths.conf
+
+systemctl -q restart php$PHPVERSION8-fpm.service
+systemctl -q reload nginx.service
 
 dialog_msg "Please save the shown login information on next page"
 cat /root/NeXt-Server-Bookworm/phpmyadmin_login_data.txt
