@@ -1,5 +1,4 @@
 #!/bin/bash
-#Please check the license provided with the script!
 
 add_openssh_user() {
 

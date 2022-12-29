@@ -1,5 +1,4 @@
 #!/bin/bash
-#Please check the license provided with the script!
 
 set_logs() {
 main_log="/root/NeXt-Server-Bookworm/logs/main.log"
