@@ -4,7 +4,7 @@ install_managevmail() {
 
 trap error_exit ERR
 
-install_packages "python3 libprotobuf23 python3-protobuf python3-pymysql"
+install_packages "python3 libprotobuf32 python3-protobuf python3-pymysql"
 
 wget http://ftp.de.debian.org/debian/pool/main/m/mysql-connector-python/python3-mysql.connector_${MYSQL_CONNECTOR}_all.deb >>"${main_log}" 2>>"${err_log}" || error_exit
 if [[ $? -ne 0 ]]; then
