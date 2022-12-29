@@ -49,11 +49,8 @@ echo "ROUNDCUBEDBName = ${ROUNDCUBE_DB_NAME}" >> /root/NeXt-Server-Bookworm/logi
 echo "ROUNDCUBEDBPassword = ${ROUNDCUBE_DB_PASS}" >> /root/NeXt-Server-Bookworm/login_information.txt
 echo "DES_KEY = ${RANDOM_DESKEY}" >> /root/NeXt-Server-Bookworm/login_information.txt
 echo "Disable the http auth?" >> /root/NeXt-Server-Bookworm/login_information.txt
-echo "Open /etc/nginx/sites-available/${MYDOMAIN}.conf and delete the lines:" >> /root/NeXt-Server-Bookworm/login_information.txt
-echo "location /webmail/ {" >> /root/NeXt-Server-Bookworm/login_information.txt
-echo 'auth_basic "Restricted";' >> /root/NeXt-Server-Bookworm/login_information.txt
-echo "}" >> /root/NeXt-Server-Bookworm/login_information.txt
-echo "After saving that file, please restart the nginx service:" >> /root/NeXt-Server-Bookworm/login_information.txt
+echo "Use this command and restart the nginx server:" >> /root/NeXt-Server-Bookworm/login_information.txt
+echo "htpasswd -D /etc/nginx/htpasswd/.htpasswd ${ROUND_HTTPAUTH_USER}" >> /root/NeXt-Server-Bookworm/login_information.txt
 echo "systemctl restart nginx.service" >> /root/NeXt-Server-Bookworm/login_information.txt
 echo "#------------------------------------------------------------------------------#" >> /root/NeXt-Server-Bookworm/login_information.txt
 echo "" >> /root/NeXt-Server-Bookworm/login_information.txt

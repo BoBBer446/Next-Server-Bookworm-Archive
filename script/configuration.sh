@@ -33,5 +33,6 @@ start_after_install() {
     continue_or_exit
   fi
 
-  dialog_msg "Finished after installation configuration"
+  dialog_msg "Finished configuration! \n\n
+  Please do -> never <- delete any login information stored in the .txt files!"
 }

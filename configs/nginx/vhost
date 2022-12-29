@@ -37,10 +37,6 @@ server {
     }
 
     auth_basic_user_file htpasswd/.htpasswd;
-
-    location /webmail/ {
-        auth_basic "Restricted";
-    }
 }
 
 # subdomains redirect
