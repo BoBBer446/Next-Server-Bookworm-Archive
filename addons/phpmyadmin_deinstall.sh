@@ -7,6 +7,9 @@ trap error_exit ERR
 MYSQL_ROOT_PASS=$(grep -Pom 1 "(?<=^MYSQL_ROOT_PASS: ).*$" /root/NeXt-Server-Bookworm/login_information.txt)
 mysql -u root -p${MYSQL_ROOT_PASS} -e "DROP DATABASE IF EXISTS phpmyadmin;"
 
+PMA_HTTPAUTH_DELETE_USER=$(grep -Pom 1 "(?<=^PMA_HTTPAUTH_USER = ).*$" /root/NeXt-Server-Bookworm/phpmyadmin_login_data.txt)
+htpasswd -D /etc/nginx/htpasswd/.htpasswd ${PMA_HTTPAUTH_DELETE_USER}
+
 rm -rf /var/www/${MYDOMAIN}/public/${PHPMYADMIN_PATH_NAME}
 rm /root/NeXt-Server-Bookworm/phpmyadmin_login_data.txt
 rm /etc/nginx/_phpmyadmin.conf
