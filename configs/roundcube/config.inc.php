@@ -10,13 +10,15 @@ $config = [];
 //       or (Windows): 'sqlite:///C:/full/path/to/sqlite.db'
 $config['db_dsnw'] = 'mysql://rcdbuser:rcdbpassword@localhost/rcdbname';
 
+$config['default_host'] = 'tls://%n:143';
+
 // IMAP host chosen to perform the log-in.
 // See defaults.inc.php for the option description.
-$config['imap_host'] = 'tls://mail.MYDOMAIN.de:143';
+$config['imap_host'] = 'tls://%n:143';
 
 // SMTP server host (for sending mails).
 // See defaults.inc.php for the option description.
-$config['smtp_host'] = 'tls://mail.MYDOMAIN.de:587';
+$config['smtp_host'] = 'tls://%n:587';
 
 // SMTP username (if required) if you use %u as the username Roundcube
 // will use the current username for login
