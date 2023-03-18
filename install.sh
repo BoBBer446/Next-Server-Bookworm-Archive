@@ -8,6 +8,7 @@ if [ -f "$dev_mode" ]; then
     sed_replace_word "4096" "4096 --staging" "/root/NeXt-Server-Bookworm/script/mailserver.sh"
     sed_replace_word "4096" "2048" "/root/NeXt-Server-Bookworm/script/dovecot.sh"
     sed_replace_word "1.1.1.1" "46.38.225.230" "/root/NeXt-Server-Bookworm/script/functions.sh"
+    sed -i '100,109 s/^/#/' /root/NeXt-Server-Bookworm/confighelper.sh
     set -x
 fi
 
