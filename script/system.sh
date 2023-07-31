@@ -60,14 +60,14 @@ cat > /etc/apt/sources.list <<END
 #------------------------------------------------------------------------------#
 
 ###### Debian Main Repos
-deb http://deb.debian.org/debian/ testing main
-deb-src http://deb.debian.org/debian/ testing main
+deb http://deb.debian.org/debian/ bookworm main
+deb-src http://deb.debian.org/debian/ bookworm main
 
-deb http://security.debian.org/debian-security testing-security main
-deb-src http://security.debian.org/debian-security testing-security main
+deb http://security.debian.org/debian-security bookworm-security main
+deb-src http://security.debian.org/debian-security bookworm-security main
 
-deb http://deb.debian.org/debian/ testing-updates main
-deb-src http://deb.debian.org/debian/ testing-updates main
+deb http://deb.debian.org/debian/ bookworm-updates main
+deb-src http://deb.debian.org/debian/ bookworm-updates main
 
 END
 
