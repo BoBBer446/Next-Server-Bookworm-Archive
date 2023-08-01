@@ -54,6 +54,7 @@ NGINX_MODULES="--without-http_browser_module \
 --with-http_dav_module \
 --with-http_mp4_module \
 --with-http_gunzip_module \
+--with-http_v3_module \
 --with-openssl-opt=enable-tls1_3 \
 --with-openssl=/root/NeXt-Server-Bookworm/sources/openssl-${OPENSSL_VERSION}"
 

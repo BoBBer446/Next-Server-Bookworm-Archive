@@ -1,6 +1,8 @@
 server {
-    listen              IPADR:443 ssl http2;
-    #listen              [IP6ADR]:443 ssl http2;
+    listen              IPADR:443 ssl;
+    listen              IPADR:443 quic reuseport;
+    #listen             [IP6ADR]:443 ssl;
+    #listen             [IP6ADR]:443 quic reuseport;
     server_name         MYDOMAIN;
     set                 $base /var/www/MYDOMAIN;
     root                $base/public;
@@ -41,8 +43,10 @@ server {
 
 # subdomains redirect
 server {
-    listen              IPADR:443 ssl http2;
-    #listen              [IP6ADR]:443 ssl http2;
+    listen              IPADR:443 ssl;
+    listen              IPADR:443 quic reuseport;
+    #listen             [IP6ADR]:443 ssl;
+    #listen             [IP6ADR]:443 quic reuseport;
     server_name         *.MYDOMAIN;
 
     # SSL
