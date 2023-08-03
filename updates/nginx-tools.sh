@@ -61,8 +61,8 @@ update_nginx() {
   mkdir -p /root/NeXt-Server-Bookworm/updates/sources/
 
   cd /root/NeXt-Server-Bookworm/updates/sources/
-  wget https://www.openssl.org/source/openssl-${OPENSSL_VERSION}.tar.gz >>"$main_log" 2>>"$err_log"
-  tar -xzf openssl-${OPENSSL_VERSION}.tar.gz >>"$main_log" 2>>"$err_log"
+  wget https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${LIBRESSL_VERSION}.tar.gz
+  tar -xzf libressl-${LIBRESSL_VERSION}.tar.gz
 
   systemctl -q stop nginx.service
   cd /root/NeXt-Server-Bookworm/updates/sources/
@@ -113,8 +113,8 @@ update_nginx() {
   --with-http_dav_module \
   --with-http_mp4_module \
   --with-http_gunzip_module \
-  --with-openssl-opt=enable-tls1_3 \
-  --with-openssl=/root/NeXt-Server-Bookworm/updates/sources/openssl-${OPENSSL_VERSION}"
+  --with-libressl-opt=enable-tls1_3 \
+  --with-libressl=/root/NeXt-Server-Bookworm/updates/sources/libressl-${libressl_VERSION}"
 
   ./configure $NGINX_OPTIONS $NGINX_MODULES --with-cc-opt='-O2 -g -pipe -Wall -Wformat -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong -m64 -mtune=generic'
   make -j $(nproc) >>"${make_log}" 2>>"${make_err_log}"

@@ -19,7 +19,7 @@ server {
     error_log           /var/log/nginx/MYDOMAIN.error.log warn;
 
     # index.php
-    index               index.php;
+    index               index.php index.html;
 
     # index.php fallback
     location / {

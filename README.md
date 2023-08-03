@@ -184,7 +184,7 @@ A big thanks to [George Liu], for some great lines of code!.
 ## Used software
 - Nginx                      <https://github.com/nginx/nginx>
 - Openssh                    <https://github.com/openssh/openssh-portable>
-- Openssl                    <https://github.com/openssl/openssl>
+- Libressl                   <https://github.com/libressl/portable>
 - Dovecot                    <https://github.com/dovecot/core>
 - Postfix                    <http://www.postfix.org/>
 - fail2ban                   <https://github.com/fail2ban/fail2ban>

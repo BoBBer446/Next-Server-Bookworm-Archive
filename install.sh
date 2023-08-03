@@ -16,8 +16,8 @@ mkdir /root/NeXt-Server-Bookworm/sources
 progress_gauge "0" "Installing System..."
 install_system
 
-progress_gauge "1" "Installing OpenSSL..."
-install_openssl
+progress_gauge "1" "Installing LibreSSL..."
+install_libressl
 
 progress_gauge "31" "Installing OpenSSH..."
 install_openssh
